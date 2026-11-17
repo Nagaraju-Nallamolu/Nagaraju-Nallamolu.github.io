@@ -196,6 +196,7 @@ main{min-height:100vh;padding-top:var(--nav-h)}
 .stat b{display:block;font-family:var(--display);font-size:clamp(34px,4.4vw,52px)}
 .stat span{color:var(--muted);font-size:14px}
 @media(max-width:760px){.stats{grid-template-columns:repeat(2,1fr)}.stat:nth-child(2){border-right:0}.stat:nth-child(-n+2){border-bottom:1px solid var(--line)}}
+@media(max-width:560px){.stat{padding:22px 16px}.stat b{font-size:30px}}
 .steps{counter-reset:s;display:grid;grid-template-columns:repeat(5,1fr);gap:16px;position:relative}
 .step{position:relative;padding:24px 20px;border-radius:var(--r);background:var(--surface);border:1px solid var(--line)}
 .step::before{counter-increment:s;content:"0" counter(s);font-family:var(--mono);color:var(--brand2);font-size:13px;display:block;margin-bottom:14px}
@@ -218,40 +219,92 @@ main{min-height:100vh;padding-top:var(--nav-h)}
 .stack-col h4{font-size:15px;font-family:var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--brand2);margin-bottom:16px;font-weight:500}
 
 /* ============ DEMO ============ */
-.dash{border:1px solid var(--line2);border-radius:24px;background:var(--surface);box-shadow:var(--glow);overflow:hidden}
-.dash-bar{display:flex;align-items:center;gap:14px;padding:14px 20px;border-bottom:1px solid var(--line);background:var(--bg2);font-family:var(--mono);font-size:12px;color:var(--muted);flex-wrap:wrap}
-.dash-bar .live{margin-left:auto;display:flex;gap:8px;align-items:center;color:var(--ok)}
-.dash-body{display:grid;grid-template-columns:repeat(12,1fr);gap:16px;padding:18px}
-.panel{background:var(--bg2);border:1px solid var(--line);border-radius:16px;padding:20px}
-.panel h4{font-size:13px;font-family:var(--mono);font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:14px;display:flex;justify-content:space-between;align-items:center}
-.c-4{grid-column:span 4}.c-5{grid-column:span 5}.c-6{grid-column:span 6}.c-7{grid-column:span 7}.c-8{grid-column:span 8}.c-12{grid-column:span 12}
-@media(max-width:900px){.c-4,.c-5,.c-6,.c-7,.c-8{grid-column:span 12}}
-.kpi b{font-family:var(--display);font-size:40px;display:block;line-height:1}
-.kpi small{color:var(--muted);font-size:13px}
-.kpi .delta{font-family:var(--mono);font-size:12px;color:var(--ok);margin-left:6px}
-#chart{width:100%;height:210px}
-.tank{display:flex;gap:22px;align-items:center}
-.tank-vis{width:110px;height:170px;border:2px solid var(--line2);border-radius:14px 14px 22px 22px;position:relative;overflow:hidden;flex:none;background:var(--bg)}
-.tank-fill{position:absolute;inset:auto 0 0 0;height:50%;background:linear-gradient(180deg,#38bdf8,#2563eb);transition:height .8s ease}
-.tank-fill::before{content:"";position:absolute;top:-8px;left:-20%;width:140%;height:16px;border-radius:50%;background:rgba(255,255,255,.35);animation:wave 3s ease-in-out infinite alternate}
-@keyframes wave{to{transform:translateX(10%)}}
-.tank-pct{position:absolute;inset:0;display:grid;place-items:center;font-family:var(--display);font-weight:700;font-size:26px;color:#fff;text-shadow:0 2px 8px #0008}
-.tank-info{flex:1;display:grid;gap:12px;font-size:14px}
 .row{display:flex;justify-content:space-between;gap:10px;align-items:center;color:var(--muted)}
 .row b{color:var(--text);font-weight:600}
 .switch{position:relative;width:50px;height:28px;border-radius:999px;background:var(--line2);border:0;cursor:pointer;transition:.25s;flex:none}
 .switch::after{content:"";position:absolute;top:3px;left:3px;width:22px;height:22px;border-radius:50%;background:#fff;transition:.25s;box-shadow:0 2px 6px #0005}
 .switch[aria-checked="true"]{background:var(--grad)}.switch[aria-checked="true"]::after{transform:translateX(22px)}
-.chan{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
-.ch{padding:14px;border-radius:14px;border:1px solid var(--line);background:var(--surface);display:flex;flex-direction:column;gap:12px;transition:.25s}
-.ch.on{border-color:color-mix(in srgb,var(--brand2) 60%,transparent);box-shadow:0 0 24px -8px var(--brand2)}
-.ch-top{display:flex;justify-content:space-between;align-items:center}
-.ch b{font-size:14px;font-weight:600}.ch small{display:block;font-family:var(--mono);font-size:11px;color:var(--muted)}
-.log{font-family:var(--mono);font-size:12px;display:grid;gap:7px;max-height:190px;overflow:hidden}
-.log div{display:flex;gap:12px;color:var(--muted);animation:pageIn .4s}.log time{color:var(--faint);flex:none}.log .ok{color:var(--ok)}.log .wr{color:var(--warn)}
 .range{width:100%;accent-color:var(--brand2)}
 .note{font-size:13px;color:var(--faint);margin-top:16px;display:flex;gap:8px;align-items:center}
 
+.cc{border:1px solid var(--line2);border-radius:26px;background:linear-gradient(180deg,var(--surface),var(--bg2));box-shadow:var(--glow);overflow:hidden}
+.cc-bar{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;padding:18px 22px;border-bottom:1px solid var(--line);background:color-mix(in srgb,var(--bg2) 70%,transparent)}
+.cc-title{display:flex;align-items:center;gap:14px}.cc-title b{display:block;font-family:var(--display);font-size:18px;line-height:1.2}.cc-title small{color:var(--muted);font-size:12.5px}.sim{color:var(--warn)}
+.presets{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.pl{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);margin-right:4px}
+.pre{padding:8px 15px;border-radius:999px;border:1px solid var(--line2);background:var(--surface);cursor:pointer;font-size:13.5px;font-weight:500;color:var(--text);transition:.2s}
+.pre:hover{border-color:var(--brand2);transform:translateY(-1px)}.pre.ghost{background:transparent;color:var(--muted)}
+.pre.act{background:var(--grad);border-color:transparent;color:#fff}
+
+.cc-kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;padding:18px 22px 4px}
+.kpi2{position:relative;padding:16px 18px;border-radius:16px;border:1px solid var(--line);background:var(--bg2);overflow:hidden;min-height:112px}
+.kpi2>span{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--faint)}
+.kpi2 b{display:flex;align-items:baseline;gap:6px;margin-top:8px;font-family:var(--display);font-size:34px;line-height:1}
+.kpi2 b i{font-style:normal}.kpi2 b u{text-decoration:none;font-size:14px;color:var(--muted);font-weight:500}
+.kpi2 em{display:block;margin-top:12px;font-style:normal;font-size:12px;color:var(--muted)}
+.kpi2 canvas{position:absolute;right:10px;bottom:8px;width:120px;height:32px}
+
+.cc-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:14px;padding:14px 22px 22px}
+.pn{background:var(--bg2);border:1px solid var(--line);border-radius:18px;padding:18px 20px;min-width:0}
+.pn h4{display:flex;justify-content:space-between;align-items:center;gap:10px;font-family:var(--mono);font-size:12px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:16px}
+.pn h4 small{font-size:11px;letter-spacing:.02em;text-transform:none;color:var(--faint);font-family:var(--font)}
+.cc-sw{grid-column:span 7}.cc-tank{grid-column:span 5}.cc-chart{grid-column:span 7}.cc-side{grid-column:span 5;display:grid;gap:14px;align-content:start}
+@media(max-width:980px){.cc-kpis{grid-template-columns:repeat(2,1fr)}.cc-sw,.cc-tank,.cc-chart,.cc-side{grid-column:span 12}}
+@media(max-width:560px){.cc-kpis,.cc-grid{padding-inline:12px}.cc-bar{padding-inline:14px}.tiles{gap:10px!important}.kpi2 canvas{display:none}}
+.chip2{font-family:var(--mono)!important;font-size:11px!important;padding:3px 10px;border-radius:999px;border:1px solid var(--line2);color:var(--muted)!important;letter-spacing:.06em!important;text-transform:none}
+.chip2.on{color:var(--ok)!important;border-color:color-mix(in srgb,var(--ok) 50%,transparent);background:color-mix(in srgb,var(--ok) 12%,transparent)}
+
+.tiles{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.tile{position:relative;text-align:left;padding:14px 14px 12px;border-radius:16px;border:1px solid var(--line);background:var(--surface);cursor:pointer;transition:.25s;display:flex;flex-direction:column;gap:4px;color:var(--text)}
+.tile:hover{border-color:var(--line2);transform:translateY(-2px)}
+.tile.on{border-color:color-mix(in srgb,var(--brand2) 55%,transparent);box-shadow:0 0 34px -14px var(--brand2);background:linear-gradient(180deg,color-mix(in srgb,var(--brand2) 9%,var(--surface)),var(--surface))}
+.tile-top{display:flex;justify-content:space-between;align-items:center;font-size:14px;font-weight:600;gap:8px}
+.tile-top small{font-family:var(--mono);color:var(--faint);font-weight:400;font-size:11px}
+.tile svg.il{width:100%;height:88px}
+.tile-foot{display:flex;justify-content:space-between;font-family:var(--mono);font-size:12px;color:var(--muted)}
+.tile.on .tile-foot b{color:var(--ok)}
+.il{--off:#27427a;--ln:#5b78b3}
+:root[data-theme="light"] .il{--off:#c6d6f5;--ln:#6f8cc4}
+.il *{transition:fill .3s,opacity .3s,stroke .3s}
+.il .st{stroke:var(--ln);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.il .glow{opacity:0}.tile.on .il .glow{opacity:1}
+.il .bulb{fill:var(--off)}.tile.on .il .bulb{fill:#fde68a;stroke:#fbbf24}
+.il .rays{opacity:0;stroke:#fbbf24;stroke-width:2;stroke-linecap:round}.tile.on .il .rays{opacity:1}
+.il .rotor{transform-origin:60px 44px;fill:var(--off)}.tile.on .il .rotor{fill:#7dd3fc;animation:spin 1s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.il .gbody{fill:var(--off)}.tile.on .il .gbody{fill:url(#heat)}
+.il .steam{opacity:0;stroke:#fca5a5;fill:none;stroke-width:2;stroke-linecap:round}.tile.on .il .steam{animation:steam 2s ease-in infinite}
+.il .steam.s2{animation-delay:.7s!important}
+@keyframes steam{from{transform:translateY(8px);opacity:0}30%{opacity:.9}to{transform:translateY(-8px);opacity:0}}
+.il .drop{opacity:0;fill:#38bdf8}.tile.on .il .drop{animation:fall 1.1s linear infinite}
+.il .drop.d2{animation-delay:.35s!important}.il .drop.d3{animation-delay:.7s!important}
+@keyframes fall{from{transform:translateY(-6px);opacity:0}20%{opacity:1}to{transform:translateY(24px);opacity:0}}
+
+.tank2{display:flex;gap:24px;align-items:center}
+.tank-vis{width:128px;height:200px;border:2px solid var(--line2);border-radius:16px 16px 26px 26px;position:relative;overflow:hidden;flex:none;background:var(--bg)}
+.ticks{position:absolute;inset:0;background:repeating-linear-gradient(to bottom,transparent 0 19px,var(--line) 19px 20px);z-index:2;pointer-events:none}
+.tank-fill{position:absolute;inset:auto 0 0 0;height:50%;background:linear-gradient(180deg,#38bdf8,#2563eb);transition:height .8s ease}
+.tank-fill::before{content:"";position:absolute;top:-8px;left:-20%;width:140%;height:16px;border-radius:50%;background:rgba(255,255,255,.35);animation:wave 3s ease-in-out infinite alternate}
+@keyframes wave{to{transform:translateX(10%)}}
+.tank-pct{position:absolute;inset:0;display:grid;place-items:center;font-family:var(--display);font-weight:700;font-size:28px;color:#fff;text-shadow:0 2px 8px #0008;z-index:3}
+.tank-info{flex:1;display:grid;gap:12px;font-size:14px;min-width:0}
+
+.legend{display:flex;gap:16px;align-items:center;font-family:var(--font);font-size:12px;letter-spacing:0;text-transform:none;color:var(--muted)}
+.legend i{width:10px;height:10px;border-radius:3px;display:inline-block;margin-right:-8px}.lg1{background:#a78bfa}.lg2{background:#22d3ee}
+.cc-chart{display:flex;flex-direction:column}.chartwrap{position:relative;flex:1;min-height:250px}#chart{position:absolute;inset:0;width:100%;height:100%;display:block;touch-action:pan-y}
+.cc-tank{display:flex;flex-direction:column}.cc-tank .tank2{flex:1}
+.tip{position:absolute;top:4px;pointer-events:none;padding:7px 10px;border-radius:10px;background:var(--surface2);border:1px solid var(--line2);font-family:var(--mono);font-size:11.5px;white-space:nowrap;line-height:1.5}
+.tip[hidden]{display:none}
+
+.rules{display:grid;gap:10px}
+.rule{display:flex;justify-content:space-between;align-items:center;gap:14px;padding:12px 14px;border-radius:12px;background:var(--surface);border:1px solid var(--line)}
+.rule b{font-size:14px;display:block}.rule small{color:var(--muted);font-size:12.5px}
+.log{font-family:var(--mono);font-size:12px;display:grid;gap:8px;min-height:170px;max-height:190px;overflow:hidden;align-content:start}
+.log div{display:flex;gap:12px;color:var(--muted);animation:pageIn .4s;align-items:baseline}
+.log time{color:var(--faint);flex:none}
+.log div::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--line2);flex:none;transform:translateY(-1px)}
+.log div.ok::before{background:var(--ok)}.log div.wr::before{background:var(--warn)}
+.log .ok{color:var(--ok)}.log .wr{color:var(--warn)}
 /* ============ ESTIMATOR / FORMS ============ */
 .est{display:grid;grid-template-columns:1.2fr .8fr;gap:24px;align-items:start}
 @media(max-width:900px){.est{grid-template-columns:1fr}}
@@ -347,6 +400,77 @@ footer li a{color:var(--muted);font-size:15px;transition:.2s}footer li a:hover{c
 .ok-box{display:none;gap:14px;align-items:flex-start;padding:16px 18px;margin-top:18px;border:1px solid color-mix(in srgb,var(--ok) 50%,transparent);background:color-mix(in srgb,var(--ok) 10%,transparent);border-radius:14px;font-size:14.5px}
 .ok-box.show{display:flex;animation:pageIn .4s}
 .ok-box svg{width:22px;height:22px;flex:none;stroke:var(--ok);fill:none;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+/* toolbar / search / product + workshop cards */
+.toolbar{display:flex;gap:14px;justify-content:space-between;align-items:center;flex-wrap:wrap;margin-bottom:12px}
+.toolbar .tabs{margin:0}
+.search{position:relative;flex:0 1 280px;min-width:200px}
+.search svg{position:absolute;left:14px;top:50%;transform:translateY(-50%);width:17px;height:17px;stroke:var(--faint);fill:none;stroke-width:2;pointer-events:none}
+.search input{width:100%;padding:11px 14px 11px 40px;border-radius:999px;border:1px solid var(--line2);background:var(--surface);outline:0;font-size:14.5px}
+.search input:focus{border-color:var(--brand2);box-shadow:0 0 0 3px color-mix(in srgb,var(--brand2) 22%,transparent)}
+.empty{text-align:center;padding:60px 0;color:var(--muted);display:grid;gap:16px;justify-items:center}
+.empty[hidden]{display:none}
+.tab .n{opacity:.65;margin-left:6px;font-size:12px}
+.steps.s3{grid-template-columns:repeat(3,1fr)}@media(max-width:760px){.steps.s3{grid-template-columns:1fr}}
+.pcard{display:flex;flex-direction:column;padding:0;cursor:pointer}
+.pc-art{aspect-ratio:16/10;display:grid;place-items:center;position:relative;overflow:hidden;border-bottom:1px solid var(--line)}
+.pc-art svg{width:62%;height:auto;max-height:92%}
+.pc-b{padding:22px 24px 24px;display:flex;flex-direction:column;flex:1}
+.pc-b h3{font-size:21px;margin:12px 0 8px}.pc-b p{flex:1}
+.pc-b .tags{margin-top:16px}
+.wk-meta{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 4px}
+.wk-meta span{display:inline-flex;gap:6px;align-items:center;font-size:12.5px;color:var(--muted);padding:4px 10px;border-radius:8px;background:var(--bg2);border:1px solid var(--line)}
+.lv-b{color:var(--ok)!important}.lv-i{color:var(--warn)!important}.lv-a{color:var(--accent)!important}
+.tl-ico{display:flex;justify-content:space-between;align-items:flex-start}
+.pcard .pc-art + .pc-b .more,.card .more{margin-top:18px}
+
+/* modal (pop-up detail page) */
+.modal{position:fixed;inset:0;z-index:450;display:none}
+.modal.open{display:block}
+.m-back{position:absolute;inset:0;background:rgba(2,6,18,.68);backdrop-filter:blur(6px);animation:fade .25s}
+@keyframes fade{from{opacity:0}}
+@keyframes mIn{from{opacity:0;transform:translate(-50%,-47%) scale(.98)}}
+@keyframes sheet{from{transform:translateY(60px);opacity:0}}
+.m-panel{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:min(980px,calc(100% - 32px));max-height:min(90vh,880px);background:var(--surface);border:1px solid var(--line2);border-radius:26px;box-shadow:0 40px 100px -30px #000;display:flex;flex-direction:column;overflow:hidden;animation:mIn .35s cubic-bezier(.2,.8,.2,1)}
+.m-close{position:absolute;top:14px;right:14px;z-index:6;background:color-mix(in srgb,var(--surface) 85%,transparent);backdrop-filter:blur(6px)}
+.m-scroll{overflow:auto;flex:1;overscroll-behavior:contain}
+.m-head{display:grid;grid-template-columns:290px 1fr;border-bottom:1px solid var(--line)}
+.m-art{min-height:240px;display:grid;place-items:center;position:relative;overflow:hidden;color:#fff}
+.m-art svg{width:88%;height:auto;max-height:230px}
+.m-title{padding:32px 60px 26px 34px}
+.m-title h2{font-size:clamp(26px,3.6vw,38px);margin:12px 0 10px}
+.m-title p{color:var(--muted)}
+.m-body{padding:28px 34px 30px;display:grid;grid-template-columns:1fr 1fr;gap:30px}
+.m-body h4{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--brand2);margin-bottom:12px;font-weight:500}
+.m-body .full{grid-column:1/-1}
+.m-list{list-style:none;display:grid;gap:9px}
+.m-list li{display:flex;gap:11px;color:var(--muted);font-size:14.5px}
+.m-list li::before{content:"";flex:none;width:18px;height:18px;margin-top:3px;border-radius:50%;background:var(--grad);-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5' fill='none' stroke='black' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/contain no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5' fill='none' stroke='black' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/contain no-repeat}
+.spec{display:grid;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--bg2)}
+.spec div{display:flex;justify-content:space-between;gap:16px;padding:10px 14px;font-size:14px;border-bottom:1px solid var(--line)}
+.spec div:last-child{border:0}.spec span{color:var(--muted)}.spec b{font-weight:500;text-align:right}
+.m-foot{display:flex;gap:12px;align-items:center;justify-content:space-between;padding:16px 34px;border-top:1px solid var(--line);background:var(--bg2);flex-wrap:wrap}
+.m-foot .l{display:flex;gap:10px;flex-wrap:wrap}
+.m-foot[hidden]{display:none}
+.m-form{padding:28px 34px 34px;max-width:760px}
+.m-form h3{font-size:26px;margin-bottom:6px}
+.m-form .sub{color:var(--muted);font-size:15px;margin-bottom:22px}
+.back-link{display:inline-flex;gap:6px;align-items:center;color:var(--muted);font-size:14px;margin-bottom:18px;cursor:pointer;background:none;border:0}
+.back-link:hover{color:var(--text)}
+.success{text-align:center;padding:56px 34px 60px}
+.success h3{font-size:28px;margin-bottom:8px}.success p{color:var(--muted);max-width:46ch;margin:0 auto}
+.ok-ic{width:72px;height:72px;border-radius:50%;margin:0 auto 22px;display:grid;place-items:center;background:color-mix(in srgb,var(--ok) 15%,transparent);border:1px solid var(--ok);animation:pop .5s cubic-bezier(.2,1.4,.4,1)}
+@keyframes pop{from{transform:scale(.5);opacity:0}}
+.ok-ic svg{width:34px;height:34px;stroke:var(--ok);fill:none;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
+.refbox{display:inline-block;font-family:var(--mono);padding:8px 16px;border:1px dashed var(--line2);border-radius:10px;margin:16px 0;color:var(--brand2);letter-spacing:.08em}
+.fld .hint{font-size:12px;color:var(--faint)}
+@media(max-width:760px){
+ .m-panel{left:0;right:0;top:auto;bottom:0;transform:none;width:100%;max-height:94vh;border-radius:24px 24px 0 0;animation:sheet .35s cubic-bezier(.2,.8,.2,1)}
+ .m-head{grid-template-columns:1fr}.m-art{min-height:160px}.m-art svg{max-height:150px}
+ .m-title{padding:22px 20px 20px}.m-body{grid-template-columns:1fr;padding:22px 20px;gap:24px}
+ .m-foot,.m-form{padding-inline:20px}.m-foot .btn{flex:1;justify-content:center}.m-foot .l{flex:1}
+}
+body.m-lock{overflow:hidden}
+
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}.rv{opacity:1;transform:none}}
 </style>
 </head>
@@ -358,6 +482,8 @@ footer li a{color:var(--muted);font-size:15px;transition:.2s}footer li a:hover{c
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <defs>
     <linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3b82f6"/><stop offset="1" stop-color="#22d3ee"/></linearGradient>
+    <radialGradient id="gl"><stop offset="0" stop-color="#fde68a" stop-opacity=".85"/><stop offset="1" stop-color="#fde68a" stop-opacity="0"/></radialGradient>
+    <linearGradient id="heat" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fb923c"/><stop offset="1" stop-color="#ef4444"/></linearGradient>
     <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
     <symbol id="i-iot" viewBox="0 0 24 24"><circle cx="12" cy="12" r="2.5"/><path d="M7.8 7.8a6 6 0 0 0 0 8.4M16.2 7.8a6 6 0 0 1 0 8.4M4.9 4.9a10 10 0 0 0 0 14.2M19.1 4.9a10 10 0 0 1 0 14.2"/></symbol>
     <symbol id="i-ai" viewBox="0 0 24 24"><path d="M9 3v2M15 3v2M9 19v2M15 19v2M3 9h2M3 15h2M19 9h2M19 15h2"/><rect x="6" y="6" width="12" height="12" rx="2"/><path d="M10 10h4v4h-4z"/></symbol>
@@ -406,9 +532,9 @@ footer li a{color:var(--muted);font-size:15px;transition:.2s}footer li a:hover{c
       <a href="#/home" data-r="home">Home</a>
       <a href="#/products" data-r="products">Products</a>
       <a href="#/solutions" data-r="solutions">Solutions</a>
+      <a href="#/workshops" data-r="workshops">Workshops</a>
       <a href="#/technology" data-r="technology">Technology</a>
       <a href="#/demo" data-r="demo">Live Demo</a>
-      <a href="#/learn" data-r="learn">Learn</a>
       <a href="#/about" data-r="about">About</a>
       <a href="#/contact" data-r="contact">Contact</a>
       <a href="employee/" class="mob-only">🔒 Employee Login</a>
@@ -480,6 +606,14 @@ footer li a{color:var(--muted);font-size:15px;transition:.2s}footer li a:hover{c
 
   <div class="section">
     <div class="wrap">
+      <div class="head rv"><p class="eyebrow">Workshops</p><h2 class="h2">Learn by <span class="grad">building.</span></h2><p class="lead">Hands-on sessions in IoT, robotics, AI and electronics — on campus or online. Open one to see the outline and register.</p></div>
+      <div class="grid g3" id="wkTeaser"></div>
+      <div style="margin-top:34px" class="rv"><a class="btn ghost" href="#/workshops">All workshops <svg class="arr"><use href="#i-arrow"/></svg></a></div>
+    </div>
+  </div>
+
+  <div class="section alt">
+    <div class="wrap">
       <div class="head center rv"><p class="eyebrow">How we work</p><h2 class="h2">From idea to <span class="grad">deployed device.</span></h2></div>
       <div class="steps">
         <div class="step rv"><h4>Discover</h4><p>Problem, users, constraints and success criteria.</p></div>
@@ -504,13 +638,21 @@ footer li a{color:var(--muted);font-size:15px;transition:.2s}footer li a:hover{c
 <!-- ====================== PRODUCTS ====================== -->
 <section class="page" data-route="products" data-title="Products | Nexora IoT Solutions">
   <div class="page-hero"><div class="wrap">
-    <p class="eyebrow">Product innovation</p>
-    <h1>Products built for <span class="grad">real problems.</span></h1>
-    <p class="lead">Selected Nexora products and development initiatives across water, health, mobility, home automation and public safety. Each carries its current stage so you always know what is real today.</p>
+    <p class="eyebrow">Product catalogue</p>
+    <h1>Connected products across <span class="grad">every technology.</span></h1>
+    <p class="lead">IoT, AI &amp; vision, robotics, embedded, wireless, health and energy — filter by technology, open any product for full details, and order or enquire right from the pop-up.</p>
   </div></div>
-  <div class="wrap"><div class="filters tabs" id="prodFilters"><button class="tab" data-f="all" aria-selected="true">All</button><button class="tab" data-f="dev" aria-selected="false">In development</button><button class="tab" data-f="con" aria-selected="false">Concept &amp; prototype</button></div></div>
-  <div class="wrap" id="prodList"></div>
-  <div class="section"><div class="wrap"><div class="cta-band rv"><div><h2>Need a custom device?</h2><p class="lead">We design product variants and fully custom hardware for your use case.</p></div><a class="btn white" href="#/start">Start a project <svg class="arr"><use href="#i-arrow"/></svg></a></div></div></div>
+  <div class="section" style="padding-top:10px"><div class="wrap">
+    <div class="toolbar">
+      <div class="filters tabs" id="prodFilters" role="tablist" aria-label="Filter by technology"></div>
+      <label class="search"><svg><use href="#i-search"/></svg><input id="prodSearch" type="search" placeholder="Search products…" aria-label="Search products" autocomplete="off"></label>
+    </div>
+    <p class="note" id="prodCount" style="margin:4px 0 22px"></p>
+    <div class="grid g3" id="prodGrid"></div>
+    <div class="empty" id="prodEmpty" hidden><p>No products match your search.</p><button class="btn ghost sm" id="prodReset">Clear filters</button></div>
+    <p class="note" style="margin-top:26px">Stages are shown honestly on every product. Specifications for concepts are planned values and may change as engineering progresses.</p>
+  </div></div>
+  <div class="section" style="padding-top:0"><div class="wrap"><div class="cta-band rv"><div><h2>Need something that isn't listed?</h2><p class="lead">We design custom devices, firmware and dashboards around your use case.</p></div><a class="btn white" href="#/start">Plan a custom product <svg class="arr"><use href="#i-arrow"/></svg></a></div></div></div>
 </section>
 
 <!-- ====================== SOLUTIONS ====================== -->
@@ -518,7 +660,7 @@ footer li a{color:var(--muted);font-size:15px;transition:.2s}footer li a:hover{c
   <div class="page-hero"><div class="wrap">
     <p class="eyebrow">Solutions</p>
     <h1>Smart systems for <span class="grad">every sector.</span></h1>
-    <p class="lead">We apply the same connected-device foundation — sensing, control, analytics — to the problems each industry actually has.</p>
+    <p class="lead">The same connected-device foundation — sensing, control, analytics — applied to the problems each industry actually has. Open a solution to see what we deliver and request it.</p>
   </div></div>
   <div class="section" style="padding-top:20px"><div class="wrap"><div class="grid g3" id="solGrid"></div></div></div>
 
@@ -527,10 +669,40 @@ footer li a{color:var(--muted);font-size:15px;transition:.2s}footer li a:hover{c
     <div class="grid g4">
       <div class="card rv"><div class="ico"><svg><use href="#i-eye"/></svg></div><h3>Remote monitoring</h3><p>Live readings, history and alerts on any device.</p></div>
       <div class="card rv d1"><div class="ico"><svg><use href="#i-bolt"/></svg></div><h3>Automation rules</h3><p>Threshold, schedule and event-driven control.</p></div>
-      <div class="card rv d2"><div class="ico"><svg><use href="#i-ai"/></svg></div><h3>Analytics & AI</h3><p>Trends, anomaly detection and predictions.</p></div>
+      <div class="card rv d2"><div class="ico"><svg><use href="#i-ai"/></svg></div><h3>Analytics &amp; AI</h3><p>Trends, anomaly detection and predictions.</p></div>
       <div class="card rv d3"><div class="ico"><svg><use href="#i-shield"/></svg></div><h3>Secure by design</h3><p>Encrypted links, authenticated devices, role-based access.</p></div>
     </div>
   </div></div>
+</section>
+
+<!-- ====================== WORKSHOPS ====================== -->
+<section class="page" data-route="workshops" data-title="Workshops | Nexora IoT Solutions">
+  <div class="page-hero"><div class="wrap">
+    <p class="eyebrow">Nexora workshops</p>
+    <h1>Learn by <span class="grad">building real devices.</span></h1>
+    <p class="lead">Hands-on sessions for students, faculty and professionals — on your campus, online or hybrid. Open any session to see the outline, then register in a minute.</p>
+    <div class="cta-row"><button class="btn primary" data-scroll="#wkGrid">Browse sessions <svg class="arr"><use href="#i-arrow"/></svg></button><a class="btn ghost" href="#/workshops/custom">Host one at your campus</a></div>
+  </div></div>
+
+  <div class="wrap"><div class="stats rv" id="wkStats"></div></div>
+
+  <div class="section" id="wkSection">
+    <div class="wrap">
+      <div class="toolbar"><div class="filters tabs" id="wkFilters" role="tablist" aria-label="Filter by level"></div></div>
+      <div class="grid g3" id="wkGrid" style="margin-top:18px"></div>
+    </div>
+  </div>
+
+  <div class="section alt"><div class="wrap">
+    <div class="head rv"><p class="eyebrow">How registration works</p><h2 class="h2">Three simple <span class="grad">steps.</span></h2></div>
+    <div class="steps s3">
+      <div class="step rv"><h4>Register</h4><p>Open a session, tap Register and send your details.</p></div>
+      <div class="step rv d1"><h4>Get confirmation</h4><p>You receive an email straight away with your reference number.</p></div>
+      <div class="step rv d2"><h4>We confirm the batch</h4><p>Our team contacts you with dates, fee and joining details.</p></div>
+    </div>
+  </div></div>
+
+  <div class="section"><div class="wrap"><div class="cta-band rv"><div><h2>Want a session for your college or team?</h2><p class="lead">We design custom workshops around your syllabus, group size and schedule.</p></div><a class="btn white" href="#/workshops/custom">Request a custom workshop <svg class="arr"><use href="#i-arrow"/></svg></a></div></div></div>
 </section>
 
 <!-- ====================== TECHNOLOGY ====================== -->
@@ -596,75 +768,86 @@ footer li a{color:var(--muted);font-size:15px;transition:.2s}footer li a:hover{c
 
 <!-- ====================== DEMO ====================== -->
 <section class="page" data-route="demo" data-title="Live Demo | Nexora IoT Solutions">
-  <div class="page-hero"><div class="wrap">
+  <div class="page-hero" style="padding-bottom:30px"><div class="wrap">
     <p class="eyebrow">Interactive demo</p>
-    <h1>Feel the platform <span class="grad">in action.</span></h1>
-    <p class="lead">A simulated Nexora dashboard running right in your browser. Toggle switches, change the water level, and watch the rules engine respond.</p>
+    <h1>Run a connected site <span class="grad">from one screen.</span></h1>
+    <p class="lead">A simulated Nexora control center. Tap the switches, pick a scenario, drain the tank — and watch power, temperature and automation rules react in real time.</p>
   </div></div>
 
   <div class="section" style="padding-top:10px"><div class="wrap">
-    <div class="dash rv">
-      <div class="dash-bar"><span>● ● ●</span><span>nexora.cloud / site-01 / overview</span><span class="live"><span class="dot"></span> SIMULATED LIVE</span></div>
-      <div class="dash-body">
-        <div class="panel c-4 kpi"><h4>Devices online</h4><b id="kDev">4</b><small>of 4 registered <span class="delta">▲ stable</span></small></div>
-        <div class="panel c-4 kpi"><h4>Power draw</h4><b><span id="kPow">0</span> <small style="font-size:18px">W</small></b><small>active channels · live</small></div>
-        <div class="panel c-4 kpi"><h4>Room temperature</h4><b><span id="kTemp">27.0</span> <small style="font-size:18px">°C</small></b><small id="kTempNote">within range</small></div>
+    <div class="cc rv">
+      <div class="cc-bar">
+        <div class="cc-title"><span class="dot"></span><div><b>Nexora Control Center</b><small>Site 01 · Home &amp; garden · <span class="sim">simulated data</span></small></div></div>
+        <div class="presets" role="group" aria-label="Scenarios">
+          <span class="pl">Scenario</span>
+          <button class="pre" data-s="evening">Evening</button>
+          <button class="pre" data-s="night">Night</button>
+          <button class="pre" data-s="hot">Hot day</button>
+          <button class="pre" data-s="away">Away</button>
+          <button class="pre ghost" data-s="reset">Reset</button>
+        </div>
+      </div>
 
-        <div class="panel c-8"><h4><span>Telemetry · last 60 s</span><span style="color:var(--faint)">temp °C · power W</span></h4><canvas id="chart"></canvas></div>
+      <div class="cc-kpis">
+        <div class="kpi2"><span>Live power</span><b><i id="kPow">0</i><u>W</u></b><canvas id="spPow" width="140" height="36"></canvas></div>
+        <div class="kpi2"><span>Energy today</span><b><i id="kEn">0.00</i><u>kWh</u></b><em>1 s ≈ 1 simulated minute</em></div>
+        <div class="kpi2"><span>Room temperature</span><b><i id="kTemp">27.0</i><u>°C</u></b><canvas id="spTemp" width="140" height="36"></canvas></div>
+        <div class="kpi2"><span>Devices online</span><b><i>3</i><u>/ 3</u></b><em>NX-SW4 · AquaSense · Gateway</em></div>
+      </div>
 
-        <div class="panel c-4"><h4>AquaSense · tank</h4>
-          <div class="tank">
-            <div class="tank-vis"><div class="tank-fill" id="tFill"></div><div class="tank-pct" id="tPct">50%</div></div>
+      <div class="cc-grid">
+        <section class="pn cc-sw"><h4><span>NX-SW4 · four-channel switch</span><small>tap a tile to switch</small></h4><div class="tiles" id="tiles"></div></section>
+
+        <section class="pn cc-tank"><h4><span>AquaSense · overhead tank</span><small id="pumpChip" class="chip2">PUMP OFF</small></h4>
+          <div class="tank2">
+            <div class="tank-vis"><div class="ticks"></div><div class="tank-fill" id="tFill"></div><div class="tank-pct" id="tPct">50%</div></div>
             <div class="tank-info">
-              <div class="row">Pump <b id="pumpState">OFF</b></div>
-              <div class="row">Auto mode <button class="switch" id="autoSw" role="switch" aria-checked="true" aria-label="Auto mode"></button></div>
-              <label class="lbl" for="tankIn">Simulate inflow</label>
+              <div class="row">Level <b id="tLvl">50%</b></div>
+              <div class="row">Inflow <b id="tFlow">idle</b></div>
+              <label class="lbl" for="tankIn">Set water level</label>
               <input class="range" type="range" id="tankIn" min="0" max="100" value="50">
+              <p class="note" style="margin:0">Drag below 25% and the auto-pump rule kicks in.</p>
             </div>
           </div>
-          <p class="note">Rule: pump ON below 25%, OFF above 90%.</p>
-        </div>
+        </section>
 
-        <div class="panel c-7"><h4>NX-SW4 · four-channel switch</h4>
-          <div class="chan" id="chan"></div>
+        <section class="pn cc-chart"><h4><span>Telemetry · last 60 s</span><span class="legend"><i class="lg1"></i>Power (W) <i class="lg2"></i>Temp (°C)</span></h4>
+          <div class="chartwrap"><canvas id="chart"></canvas><div class="tip" id="tip" hidden></div></div></section>
+
+        <div class="cc-side">
+          <section class="pn"><h4><span>Automation rules</span></h4>
+            <div class="rules">
+              <div class="rule"><div><b>Auto pump</b><small>ON below 25 % · OFF above 90 %</small></div><button class="switch" id="ruleAuto" role="switch" aria-checked="true" aria-label="Auto pump rule"></button></div>
+              <div class="rule"><div><b>Geyser safety timer</b><small>Switch off after 25 s of heating</small></div><button class="switch" id="ruleGeyser" role="switch" aria-checked="true" aria-label="Geyser timer rule"></button></div>
+              <div class="rule"><div><b>Heat alert</b><small>Notify when room exceeds 32 °C</small></div><button class="switch" id="ruleHeat" role="switch" aria-checked="true" aria-label="Heat alert rule"></button></div>
+            </div>
+          </section>
+          <section class="pn"><h4><span>Event log</span><small>live</small></h4><div class="log" id="log"></div></section>
         </div>
-        <div class="panel c-5"><h4>Event log</h4><div class="log" id="log"></div></div>
       </div>
     </div>
-    <p class="note rv">All values on this page are generated in your browser to demonstrate the experience — they are not real device data.</p>
+    <p class="note rv">Everything on this page is generated in your browser to show the experience — it is not real device data.</p>
   </div></div>
 
   <div class="section alt"><div class="wrap">
-    <div class="head rv"><p class="eyebrow">Plan it</p><h2 class="h2">Want a dashboard like this <span class="grad">for your devices?</span></h2></div>
-    <a class="btn primary rv" href="#/start">Plan my project <svg class="arr"><use href="#i-arrow"/></svg></a>
+    <div class="head rv"><p class="eyebrow">Make it yours</p><h2 class="h2">Want a dashboard like this <span class="grad">for your devices?</span></h2><p class="lead">We build the devices, the cloud and the dashboard together.</p></div>
+    <div class="cta-row rv"><a class="btn primary" href="#/start">Plan my project <svg class="arr"><use href="#i-arrow"/></svg></a><a class="btn ghost" href="#/products">See the products</a></div>
   </div></div>
 </section>
 
-<!-- ====================== LEARN ====================== -->
-<section class="page" data-route="learn" data-title="Learn & Careers | Nexora IoT Solutions">
+<!-- ====================== CAREERS ====================== -->
+<section class="page" data-route="careers" data-title="Careers | Nexora IoT Solutions">
   <div class="page-hero"><div class="wrap">
-    <p class="eyebrow">Nexora Learning</p>
-    <h1>Learn. Build. <span class="grad">Innovate.</span></h1>
-    <p class="lead">Practical learning for students and emerging engineers — and a place to grow your career building real products.</p>
+    <p class="eyebrow">Careers</p>
+    <h1>Build what <span class="grad">comes next.</span></h1>
+    <p class="lead">We welcome motivated people across engineering, software, electronics, research and business development.</p>
   </div></div>
-
   <div class="section" style="padding-top:10px"><div class="wrap">
-    <div class="head rv"><p class="eyebrow">Workshops</p><h2 class="h2">Hands-on, <span class="grad">not slides.</span></h2></div>
-    <div class="grid g3">
-      <div class="card rv"><div class="ico"><svg><use href="#i-chip"/></svg></div><h3>Arduino & sensors</h3><p>Boards, sensors, actuators and your first working circuit.</p></div>
-      <div class="card rv d1"><div class="ico"><svg><use href="#i-iot"/></svg></div><h3>IoT with ESP32</h3><p>Connect devices to Wi-Fi, publish data and build a live dashboard.</p></div>
-      <div class="card rv d2"><div class="ico"><svg><use href="#i-robot"/></svg></div><h3>Robotics & automation</h3><p>Motors, control logic and practical automation projects.</p></div>
-    </div>
-    <div style="margin-top:30px" class="rv"><a class="btn primary" href="#/start?type=workshop">Register interest <svg class="arr"><use href="#i-arrow"/></svg></a></div>
-  </div></div>
-
-  <div class="section alt"><div class="wrap">
-    <div class="head rv"><p class="eyebrow">Careers</p><h2 class="h2">Build what <span class="grad">comes next.</span></h2><p class="lead">We welcome motivated people across engineering, software, electronics, research and business development.</p></div>
     <div class="grid" style="gap:14px">
-      <div class="role rv"><div><h4>Embedded / Firmware Engineer</h4><p>ESP32, sensors, low-power design, OTA</p></div><a class="btn ghost sm" href="#/start?type=career&role=Embedded%20%2F%20Firmware%20Engineer">Apply</a></div>
-      <div class="role rv"><div><h4>Full-stack / IoT Platform Developer</h4><p>Dashboards, APIs, databases, MQTT</p></div><a class="btn ghost sm" href="#/start?type=career&role=Full-stack%20%2F%20IoT%20Platform%20Developer">Apply</a></div>
-      <div class="role rv"><div><h4>Hardware / PCB Design Engineer</h4><p>Schematics, layout, power and testing</p></div><a class="btn ghost sm" href="#/start?type=career&role=Hardware%20%2F%20PCB%20Design%20Engineer">Apply</a></div>
-      <div class="role rv"><div><h4>Business Development & Partnerships</h4><p>Clients, vendors and collaborations</p></div><a class="btn ghost sm" href="#/start?type=career&role=Business%20Development">Apply</a></div>
+      <div class="role rv"><div><h4>Embedded / Firmware Engineer</h4><p>ESP32, sensors, low-power design, OTA</p></div><a class="btn ghost sm" href="#/contact?type=career&role=Embedded%20%2F%20Firmware%20Engineer">Apply</a></div>
+      <div class="role rv"><div><h4>Full-stack / IoT Platform Developer</h4><p>Dashboards, APIs, databases, MQTT</p></div><a class="btn ghost sm" href="#/contact?type=career&role=Full-stack%20%2F%20IoT%20Platform%20Developer">Apply</a></div>
+      <div class="role rv"><div><h4>Hardware / PCB Design Engineer</h4><p>Schematics, layout, power and testing</p></div><a class="btn ghost sm" href="#/contact?type=career&role=Hardware%20%2F%20PCB%20Design%20Engineer">Apply</a></div>
+      <div class="role rv"><div><h4>Business Development &amp; Partnerships</h4><p>Clients, vendors and collaborations</p></div><a class="btn ghost sm" href="#/contact?type=career&role=Business%20Development">Apply</a></div>
     </div>
     <p class="note rv">Don't see your role? Send an open application — we read every one.</p>
   </div></div>
@@ -817,14 +1000,15 @@ footer li a{color:var(--muted);font-size:15px;transition:.2s}footer li a:hover{c
         <a href="#/home" class="brand"><svg viewBox="0 0 64 32" fill="none"><path d="M32 16C26 5 6 3 6 16s20 11 26 0 26-11 26 0-20 13-26 0z" stroke="url(#lg)" stroke-width="5" stroke-linejoin="round"/></svg><span>NEXORA<small>IoT SOLUTIONS</small></span></a>
         <p style="color:var(--muted);font-size:15px;margin-top:16px;max-width:34ch">IoT, AI, embedded systems, robotics and software — engineering the connected future.</p>
       </div>
-      <div><h5>Explore</h5><ul><li><a href="#/products">Products</a></li><li><a href="#/solutions">Solutions</a></li><li><a href="#/technology">Technology</a></li><li><a href="#/demo">Live demo</a></li></ul></div>
-      <div><h5>Company</h5><ul><li><a href="#/about">About</a></li><li><a href="#/learn">Workshops &amp; careers</a></li><li><a href="#/contact">Contact</a></li><li><a href="employee/">🔒 Employee Login</a></li></ul></div>
+      <div><h5>Explore</h5><ul><li><a href="#/products">Products</a></li><li><a href="#/solutions">Solutions</a></li><li><a href="#/technology">Technology</a></li><li><a href="#/workshops">Workshops</a></li><li><a href="#/demo">Live demo</a></li></ul></div>
+      <div><h5>Company</h5><ul><li><a href="#/about">About</a></li><li><a href="#/workshops">Workshops</a></li><li><a href="#/careers">Careers</a></li><li><a href="#/contact">Contact</a></li><li><a href="employee/">🔒 Employee Login</a></li></ul></div>
       <div><h5>Get in touch</h5><ul><li><a href="mailto:nexoraiotsolution@gmail.com">nexoraiotsolution@gmail.com</a></li><li><a href="#/start">Start a project</a></li><li><a href="#/contact">Become a vendor</a></li></ul></div>
     </div>
     <div class="f-bot"><span>© <span id="yr"></span> Nexora IoT Solutions. All rights reserved.</span><span>Empowering the connected future.</span></div>
   </div>
 </footer>
 <button class="icon-btn to-top" id="toTop" aria-label="Back to top"><svg><use href="#i-up"/></svg></button>
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="mTitle"><div class="m-back" id="mBack"></div><div class="m-panel" id="mPanel" tabindex="-1"><button class="icon-btn m-close" id="mClose" aria-label="Close"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button><div class="m-scroll" id="mScroll"></div><div class="m-foot" id="mFoot"></div></div></div>
 <div class="cmd" id="cmd" role="dialog" aria-modal="true" aria-label="Quick jump"><div class="cmd-box"><input id="cmdIn" placeholder="Jump to a page or action…" autocomplete="off" aria-label="Search pages"><div class="cmd-list" id="cmdList"></div><div class="cmd-foot"><span><kbd>↑↓</kbd>navigate</span><span><kbd>Enter</kbd>open</span><span><kbd>Esc</kbd>close</span></div></div></div>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
@@ -834,92 +1018,399 @@ const NEXORA = {
   email: "nexoraiotsolution@gmail.com",
   // Optional: paste a Formspree / Google Apps Script / your API URL to receive form posts directly.
   // Leave empty to open the visitor's email app instead.
-  formEndpoint: ""
+  formEndpoint: "",
+  // Optional workshop batch dates, shown in the workshop pop-up, e.g. { esp32: "12-13 Dec 2026" }
+  batches: {}
 };
 
 /* ============ DATA ============ */
+const ic=(n,c="")=>`<svg ${c?`class="${c}"`:""}><use href="#${n}"/></svg>`;
+const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];
+const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+
 const SERVICES=[
  ["i-iot","IoT development","Connected devices, monitoring systems and automation solutions.",["Wi-Fi","BLE","MQTT"]],
  ["i-ai","AI & machine learning","Intelligent data processing, analytics and AI-enabled applications.",["Edge AI","Vision","Analytics"]],
  ["i-chip","Embedded systems","Microcontroller programming, firmware and electronics integration.",["ESP32","C/C++","RTOS"]],
- ["i-robot","Robotics & automation","Robotic prototypes, control systems and automation engineering.",["Motion","Control","PLC-style logic"]],
+ ["i-robot","Robotics & automation","Robotic prototypes, control systems and automation engineering.",["Motion","Control","Sensors"]],
  ["i-code","Software development","Web applications, dashboards, APIs and digital platforms.",["Dashboards","APIs","Mobile"]],
  ["i-box","Product engineering","Product concepts, prototyping, PCB design and enclosure integration.",["PCB","3D enclosure","Testing"]]
 ];
+
+const TECH={iot:"IoT",ai:"AI & Vision",robo:"Robotics",emb:"Embedded",wire:"Wireless",health:"Health & Safety",energy:"Energy & Environment"};
 const PRODUCTS=[
- {id:"aquasense",ic:"i-drop",art:"a1",name:"AquaSense",stage:"Development concept",cls:"dev",line:"Smart water management, tank monitoring and automation.",
-  pts:["Ultrasonic tank-level sensing with live percentage","Automatic pump control with dry-run and overflow protection","Usage history and low-level alerts on web and mobile","Works for homes, apartments and campuses"],tags:["ESP32","Ultrasonic","MQTT"]},
- {id:"nxsw4",ic:"i-plug",art:"a4",name:"NX-SW4 Smart Switch",stage:"In engineering",cls:"dev",line:"Four-channel retrofit smart switch controller that keeps your existing switches.",
-  pts:["Four independently controlled 230 V AC channels","Manual wall-switch use always works, even offline","ESP32-C3 Wi-Fi control with app, schedules and scenes","Designed with isolation and protection from the first schematic"],tags:["ESP32-C3","230 V AC","Retrofit"]},
- {id:"hridya",ic:"i-heart",art:"a2",name:"HRIDYA",stage:"Development concept",cls:"dev",line:"Portable ECG monitoring and health-data technology concept.",
-  pts:["Compact portable ECG capture","Secure storage and sharing of readings","Trend view for caregivers and clinicians","Positioned as a monitoring aid, not a diagnostic device"],tags:["Biosignal","BLE","Mobile"]},
- {id:"smartflow",ic:"i-traffic",art:"a3",name:"SmartFlow",stage:"Prototype / demonstration",cls:"con",line:"Traffic density analysis and emergency-priority demonstration.",
-  pts:["Camera-assisted vehicle density estimation","Adaptive signal timing demonstration","Emergency-vehicle priority concept","Dashboard for junction analytics"],tags:["Vision","Edge AI","Control"]},
- {id:"bands",ic:"i-band",art:"a5",name:"Pushkaralu Child Bands",stage:"Concept · 2027",cls:"con",line:"Low-cost, one-day child-safety bands for large pilgrim gatherings.",
-  pts:["Low-cost NFC bands for one-day use","Volunteer scanning leads to a guardian's contact","Helpline centre and lookup website","Planned for Godavari Pushkaralu 2027, Rajahmundry"],tags:["NFC","Low-cost","Public safety"]}
+ {id:"aquasense",ic:"i-drop",hue:205,name:"AquaSense",stage:"Development concept",cls:"dev",tech:["iot","wire","energy"],
+  line:"Smart water management: tank monitoring and automatic pump control.",
+  about:"AquaSense watches your water tank and runs the pump for you, so you never run dry or overflow — for homes, apartments, campuses and farms.",
+  feats:["Non-contact ultrasonic level sensing with live percentage","Automatic pump control with dry-run and overflow protection","Low-level and overflow alerts to your phone","Daily and weekly usage history","Fits existing tanks and pumps"],
+  specs:[["Sensing","Ultrasonic level (non-contact)"],["Controller","ESP32"],["Connectivity","Wi-Fi · MQTT"],["Pump output","Relay / contactor, single-phase"],["Interface","Web dashboard + mobile"]],
+  use:["Apartment overhead tanks","Schools and campuses","Farms and borewells"],stack:["ESP32","MQTT","Ultrasonic","Dashboard"]},
+ {id:"nxsw4",ic:"i-plug",hue:215,name:"NX-SW4 Smart Switch",stage:"In engineering",cls:"dev",tech:["iot","emb"],
+  line:"Four-channel retrofit smart switch controller that keeps your existing switches.",
+  about:"NX-SW4 sits behind your switchboard and adds Wi-Fi control to four circuits — while the wall switches keep working exactly as before, even offline.",
+  feats:["Four independently controlled 230 V AC channels","Manual wall-switch use always works, even without Wi-Fi","App control with schedules and scenes","Isolation and protection designed in from the first schematic","Complete design pack: BOM, schematic, PCB and enclosure"],
+  specs:[["Channels","4 independent relays"],["Mains","230 V AC"],["MCU","ESP32-C3"],["Control","Wi-Fi app + manual switch"],["Form factor","Retrofit module (revision R2.5)"]],
+  use:["Homes and apartments","Offices and shops","Rental-friendly retrofits"],stack:["ESP32-C3","Relays","PCB","Enclosure"]},
+ {id:"hridya",ic:"i-heart",hue:285,name:"HRIDYA",stage:"Development concept",cls:"dev",tech:["health","emb","wire"],
+  line:"Portable ECG monitoring and health-data technology concept.",
+  about:"HRIDYA explores compact, low-cost ECG capture with secure data sharing — a monitoring aid that keeps readings organised for patients and caregivers.",
+  feats:["Compact portable ECG capture","Bluetooth link to a phone app","Secure storage and sharing of readings","Trend view for caregivers and clinicians","A monitoring aid — not a diagnostic device"],
+  specs:[["Signal","Single-lead ECG (planned)"],["Link","Bluetooth LE"],["Storage","Local + secure cloud"],["Positioning","Monitoring aid, not diagnostic"]],
+  use:["Home monitoring","Rural health camps","Wellness programmes"],stack:["Biosignal","BLE","Mobile app"]},
+ {id:"smartflow",ic:"i-traffic",hue:190,name:"SmartFlow",stage:"Prototype / demonstration",cls:"con",tech:["ai","iot"],
+  line:"Traffic density analysis and emergency-priority demonstration.",
+  about:"SmartFlow estimates vehicle density from camera feeds and adapts signal timing in a demonstration setup, including a priority mode for emergency vehicles.",
+  feats:["Camera-assisted vehicle density estimation","Adaptive signal-timing demonstration","Emergency-vehicle priority concept","Junction analytics dashboard"],
+  specs:[["Vision","Camera-based vehicle counting"],["Compute","Edge board (Raspberry Pi class)"],["Control","Signal-timing logic demo"],["Output","Analytics dashboard"]],
+  use:["Smart-city pilots","Campus traffic","Teaching demonstrations"],stack:["OpenCV","Edge AI","MQTT"]},
+ {id:"bands",ic:"i-band",hue:40,name:"Pushkaralu Child Bands",stage:"Concept · 2027",cls:"con",tech:["wire","health"],
+  line:"Low-cost, one-day child-safety bands for large pilgrim gatherings.",
+  about:"A concept for Godavari Pushkaralu 2027 in Rajahmundry: low-cost NFC wristbands so volunteers can reunite lost children with their guardians quickly.",
+  feats:["Low-cost NFC bands designed for one-day use","Volunteer scans a band to reach the guardian's contact","Helpline centre and lookup website","Optional low-cost location tracking being explored"],
+  specs:[["Tag","Passive NFC"],["Use","One-day wristband"],["Lookup","Volunteer phone scan → web page"],["Support","Central helpline desk"]],
+  use:["Pilgrim gatherings","Fairs and festivals","Large public events"],stack:["NFC","Web lookup","Low-cost"]},
+ {id:"agrosense",ic:"i-leaf",hue:140,name:"AgroSense",stage:"Proposed concept",cls:"con",tech:["iot","wire","energy"],
+  line:"Soil-moisture monitoring and automatic irrigation for fields and gardens.",
+  about:"AgroSense measures soil moisture in the field and opens irrigation valves only when the crop needs water — saving water, power and effort.",
+  feats:["Soil moisture and temperature sensing","Threshold and schedule-based irrigation","LoRa option for large farms beyond Wi-Fi range","Solar-friendly low-power design","Water-use reports per field"],
+  specs:[["Sensors","Capacitive soil moisture, temperature"],["Radio","LoRa or Wi-Fi"],["Power","Solar + battery (planned)"],["Output","Solenoid valve driver"]],
+  use:["Small and medium farms","Nurseries and greenhouses","Gardens and campuses"],stack:["LoRa","ESP32","Solar"]},
+ {id:"enersense",ic:"i-bolt",hue:48,name:"EnerSense",stage:"Proposed concept",cls:"con",tech:["iot","energy"],
+  line:"Per-circuit energy monitoring with clamp-on sensors and live dashboards.",
+  about:"EnerSense shows where your electricity goes — circuit by circuit — and flags abnormal usage before it becomes a bill or a fault.",
+  feats:["Per-circuit power and kWh monitoring","Clamp-on current sensing","Live and historical consumption charts","Overload and abnormal-usage alerts","CSV export for reports"],
+  specs:[["Sensing","Split-core CT clamps"],["Channels","Configurable circuits"],["Link","Wi-Fi · MQTT"],["Install","Clamp-on, by a qualified electrician"]],
+  use:["Homes and offices","Small factories","Hostels and hotels"],stack:["CT sensors","ESP32","Dashboard"]},
+ {id:"airguard",ic:"i-cloud",hue:170,name:"AirGuard",stage:"Proposed concept",cls:"con",tech:["iot","emb","energy"],
+  line:"Indoor air-quality monitor with automatic ventilation control.",
+  about:"AirGuard tracks the air you breathe — particles, CO₂, temperature and humidity — and switches fans or purifiers when thresholds are crossed.",
+  feats:["PM2.5 / PM10, CO₂, temperature and humidity","LED indicator for instant air-quality status","Relay output to control a fan or purifier","History and alerts on web and mobile"],
+  specs:[["Sensors","Particulate, CO₂, temp / RH (planned)"],["MCU","ESP32"],["Display","LED / OLED"],["Link","Wi-Fi"]],
+  use:["Classrooms and labs","Offices","Homes and clinics"],stack:["ESP32","Sensors","Relay"]},
+ {id:"accesspro",ic:"i-lock",hue:255,name:"NX-Access",stage:"Proposed concept",cls:"con",tech:["wire","emb","iot"],
+  line:"NFC / RFID attendance and door-access terminal with cloud logs.",
+  about:"A tap-to-enter terminal that records who came and when — and unlocks the door only for the right card. Logs flow to a dashboard like the Nexora employee portal.",
+  feats:["Card or phone tap for attendance and entry","Relay output for electric door strikes","Time-stamped logs in the cloud","Offline buffering when Wi-Fi drops"],
+  specs:[["Reader","13.56 MHz NFC / RFID"],["MCU","ESP32"],["Output","Relay for electric lock"],["Link","Wi-Fi"]],
+  use:["Offices and labs","Colleges","Hostels and gyms"],stack:["NFC","ESP32","Cloud logs"]},
+ {id:"visionedge",ic:"i-ai",hue:300,name:"VisionEdge",stage:"Proposed concept",cls:"con",tech:["ai"],
+  line:"Edge-AI camera for people / vehicle counting and safety-gear detection.",
+  about:"VisionEdge runs detection models on a small edge device next to the camera — so video stays local and only counts and events leave the building.",
+  feats:["People and vehicle counting","Safety-gear (helmet) detection concept","Runs on the edge — video stays on-site","Event snapshots and dashboard"],
+  specs:[["Compute","Edge AI board"],["Camera","IP or USB"],["Models","Lightweight object detection"],["Output","MQTT events + dashboard"]],
+  use:["Shops and malls","Construction sites","Campus entrances"],stack:["OpenCV","TinyML","MQTT"]},
+ {id:"roverx",ic:"i-robot",hue:20,name:"NX-Rover",stage:"Proposed concept",cls:"con",tech:["robo","emb"],
+  line:"Modular line-following and obstacle-avoiding robot platform.",
+  about:"NX-Rover is a sturdy, expandable robot chassis for teaching and for small automation demos — from line following to remote-controlled missions.",
+  feats:["Line following and obstacle avoidance","Modular chassis for extra sensors","Wi-Fi / Bluetooth remote control and telemetry","Used as the platform in robotics workshops"],
+  specs:[["Drive","DC gear motors with encoders"],["MCU","ESP32"],["Sensors","IR line array, ultrasonic"],["Power","Li-ion battery pack"]],
+  use:["Robotics labs","Competitions","Small automation demos"],stack:["Motors","ESP32","Sensors"]},
+ {id:"coldtrack",ic:"i-iot",hue:200,name:"ColdTrack",stage:"Proposed concept",cls:"con",tech:["iot","wire","health"],
+  line:"Cold-storage temperature and humidity logger with instant alerts.",
+  about:"ColdTrack watches cold rooms, fridges and transport boxes around the clock and alerts you the moment temperature drifts out of range.",
+  feats:["Continuous temperature and humidity logging","Out-of-range alerts by email / SMS","Offline buffering so no readings are lost","Downloadable reports for audits"],
+  specs:[["Sensor","Digital temperature / humidity probe"],["Link","Wi-Fi or LoRa"],["Backup","Battery for power cuts"],["Reports","PDF / CSV"]],
+  use:["Cold storage and fisheries","Food transport","Labs and pharmacies"],stack:["Sensors","LoRa","Alerts"]},
+ {id:"learnkit",ic:"i-school",hue:160,name:"NX-Learn Kit",stage:"Proposed concept",cls:"con",tech:["emb","iot","robo"],
+  line:"ESP32 starter kit with guided experiments, from blink to cloud dashboard.",
+  about:"The kit we use in Nexora workshops: an ESP32 board with sensors, a relay and a display, plus a lab manual that takes you from blinking an LED to a live IoT dashboard.",
+  feats:["ESP32 board with sensors, relay and display","Step-by-step experiments with a lab manual","Works with Arduino IDE and MicroPython","Expandable into a robot or smart-switch project"],
+  specs:[["Board","ESP32 development board"],["Parts","Sensors, relay, display, breadboard"],["Software","Arduino IDE / MicroPython"],["Guide","Printed / PDF lab manual"]],
+  use:["Schools and colleges","Self-learners","Workshop batches"],stack:["ESP32","Arduino","MicroPython"]}
 ];
+
 const SOLUTIONS=[
- ["i-drop","Water management","Tank monitoring, pump automation and usage analytics for homes, buildings and farms."],
- ["i-leaf","Agriculture","Sensor-based irrigation monitoring and control that saves water and effort."],
- ["i-build","Smart buildings","Retrofit switching, scenes, energy visibility and remote control."],
- ["i-factory","Industrial monitoring","Machine status, condition sensing and alerts to reduce downtime."],
- ["i-city","Smart infrastructure","Traffic analysis, priority systems and connected public utilities."],
- ["i-heart","Healthcare technology","Portable monitoring concepts and secure health-data flows."],
- ["i-band","Public safety","Low-cost identification and lookup systems for crowded events."],
- ["i-school","Education & labs","Workshops, training kits and project-based IoT learning."],
- ["i-box","Custom products","Your idea taken from concept to PCB, firmware and cloud."]
+ {id:"water",ic:"i-drop",name:"Water management",line:"Tank monitoring, pump automation and usage analytics for homes, buildings and farms.",
+  does:["Tank and sump level monitoring","Automatic pump on / off with protection","Overflow, dry-run and leak alerts","Usage trends and reports"],
+  deliver:["Sensors and controller kit","Dashboard and phone alerts","Installation and commissioning support"],products:["aquasense"]},
+ {id:"agri",ic:"i-leaf",name:"Agriculture",line:"Sensor-based irrigation monitoring and control that saves water and effort.",
+  does:["Soil-moisture monitoring","Threshold and schedule irrigation","Remote valve control","Long-range links across large fields"],
+  deliver:["Field sensor nodes","Valve control units","Farmer-friendly dashboard"],products:["agrosense","aquasense"]},
+ {id:"buildings",ic:"i-build",name:"Smart buildings",line:"Retrofit switching, scenes, energy visibility and remote control.",
+  does:["Retrofit smart switching","Schedules and scenes","Circuit-level energy monitoring","Air-quality and access control"],
+  deliver:["Retrofit controllers","Energy and comfort dashboard","Wiring-safe installation guidance"],products:["nxsw4","enersense","airguard","accesspro"]},
+ {id:"industry",ic:"i-factory",name:"Industrial monitoring",line:"Machine status, condition sensing and alerts to reduce downtime.",
+  does:["Machine on / off and runtime tracking","Temperature and vibration sensing","Energy per machine or line","Alerts to supervisors"],
+  deliver:["Sensor and gateway kits","Plant dashboard and exports","Integration with your existing systems"],products:["enersense","visionedge","coldtrack"]},
+ {id:"infra",ic:"i-city",name:"Smart infrastructure",line:"Traffic analysis, priority systems and connected public utilities.",
+  does:["Traffic density analysis","Emergency-vehicle priority demo","Connected utility monitoring","Edge AI at the roadside"],
+  deliver:["Pilot setup and analytics","Edge devices and dashboards","Demonstration and training"],products:["smartflow","visionedge"]},
+ {id:"health",ic:"i-heart",name:"Healthcare technology",line:"Portable monitoring concepts and secure health-data flows.",
+  does:["Portable ECG capture concept","Secure data sharing","Trend views for caregivers","Cold-storage monitoring"],
+  deliver:["Prototype devices","Secure dashboards","Pilot support with partners"],products:["hridya","coldtrack"]},
+ {id:"safety",ic:"i-band",name:"Public safety",line:"Low-cost identification and lookup systems for crowded events.",
+  does:["NFC identification bands","Volunteer scan-to-contact lookup","Helpline desk tools","Crowd counting with vision"],
+  deliver:["Bands and scanning workflow","Lookup website","Event-day support plan"],products:["bands","visionedge"]},
+ {id:"education",ic:"i-school",name:"Education & labs",line:"Workshops, training kits and project-based IoT learning.",
+  does:["Hands-on workshops","Lab kits and manuals","Project mentoring","Faculty development sessions"],
+  deliver:["Curriculum-aligned sessions","Kits for every batch","On-campus or online delivery"],products:["learnkit","roverx"]},
+ {id:"custom",ic:"i-box",name:"Custom products",line:"Your idea taken from concept to PCB, firmware and cloud.",
+  does:["Concept and feasibility","Schematic and PCB design","Firmware, cloud and app","Enclosure and small-batch builds"],
+  deliver:["Working prototype","Design files and documentation","Path to small-batch production"],products:[]}
 ];
-const ic=(n,c="")=>`<svg ${c?`class="${c}"`:""}><use href="#${n}"/></svg>`;
-const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];
+
+const WORKSHOPS=[
+ {id:"arduino",ic:"i-chip",hue:215,name:"Arduino & Sensors Foundations",lv:"Beginner",dur:"1 day · 6 hrs",mode:"On-campus · Online",aud:"Students and beginners",
+  line:"Boards, sensors, actuators and your first working circuit.",
+  about:"Start from zero: understand the electronics, write your first sketch and finish the day with a working sensor project you built yourself.",
+  outline:["Electronics basics: voltage, current, breadboards","Arduino IDE and your first sketch","Reading sensors: light, distance, temperature","Driving LEDs, buzzers and relays","Mini-project: automatic night light or parking sensor"],
+  gets:["A working project you built","Lab manual (PDF)","Components for use during the session","Mentor support throughout"],pre:"No prior experience needed."},
+ {id:"esp32",ic:"i-iot",hue:200,name:"IoT with ESP32",lv:"Beginner",dur:"2 days · 12 hrs",mode:"On-campus · Online",aud:"Students, faculty, hobbyists",
+  line:"Connect devices to Wi-Fi, publish data and build a live dashboard.",
+  about:"Take a sensor from the bench to the cloud. You will connect an ESP32 to Wi-Fi, stream data over MQTT and control a relay from your phone.",
+  outline:["ESP32 and Wi-Fi fundamentals","Publishing sensor data with MQTT","Building a live web dashboard","Remote relay control from a phone","Mini-project: smart tank monitor or home switch"],
+  gets:["A working IoT project","Source code and lab manual","Dashboard template to reuse","Mentor support throughout"],pre:"Basic idea of programming helps, but is not required."},
+ {id:"robotics",ic:"i-robot",hue:20,name:"Robotics & Automation",lv:"Beginner",dur:"2 days · 12 hrs",mode:"On-campus",aud:"Students and teams",
+  line:"Motors, control logic and practical automation projects.",
+  about:"Build and program a small robot: drive motors, follow lines, avoid obstacles and finish with a mini challenge.",
+  outline:["Motors, drivers and power","Line-following logic","Obstacle avoidance with ultrasonic sensing","Remote control over Bluetooth / Wi-Fi","Team mini-challenge"],
+  gets:["A robot you programmed","Control code and wiring guide","Team challenge experience","Mentor support throughout"],pre:"No prior experience needed."},
+ {id:"edgeai",ic:"i-ai",hue:300,name:"Edge AI & Computer Vision",lv:"Intermediate",dur:"2 days · 12 hrs",mode:"On-campus · Online",aud:"UG / PG students, developers",
+  line:"Detect objects with a camera and act on them — on a small device.",
+  about:"Learn how vision models run on edge hardware, then build a real detector that triggers an action.",
+  outline:["Python and OpenCV essentials","Capturing and processing video","Running a lightweight detection model on an edge board","Triggering actions with MQTT","Mini-project: people or vehicle counter"],
+  gets:["A working vision project","Code notebooks","Deployment checklist","Mentor support throughout"],pre:"Basic Python."},
+ {id:"pcb",ic:"i-box",hue:160,name:"PCB Design Basics",lv:"Intermediate",dur:"2 days · 12 hrs",mode:"On-campus · Online",aud:"ECE / EEE students, makers",
+  line:"From schematic to a manufacturing-ready board design.",
+  about:"Design a real board end to end with free tools: capture the schematic, lay out the PCB and prepare files for fabrication.",
+  outline:["Schematic capture and component selection","Layout rules for power, traces and grounding","Design-rule checks and review","Exporting manufacturing files","Case study: an isolated IoT controller board"],
+  gets:["A board design you completed","Design checklist","Library of reusable footprints","Mentor feedback on your layout"],pre:"Basic electronics. Tools used: KiCad (free)."},
+ {id:"smarthome",ic:"i-plug",hue:215,name:"Smart Home Automation Build",lv:"Beginner",dur:"1 day · 6 hrs",mode:"On-campus",aud:"Students, electricians, enthusiasts",
+  line:"Build a multi-channel smart controller and learn retrofit safety.",
+  about:"Build a low-voltage multi-channel controller on an ESP32, control it from an app and learn how retrofit smart switches are designed safely.",
+  outline:["Relay control and driver basics","Building a 4-channel controller (low voltage)","App control, schedules and scenes","Retrofit design and safety principles","Mains wiring is demonstrated by the instructor, never practised by participants"],
+  gets:["A working multi-channel controller","Code and wiring guide","Safety checklist","Mentor support throughout"],pre:"No prior experience needed."},
+ {id:"embeddedc",ic:"i-code",hue:260,name:"Embedded C & RTOS",lv:"Intermediate",dur:"3 days · 18 hrs",mode:"On-campus · Online",aud:"Final-year students, junior engineers",
+  line:"Write reliable firmware: peripherals, interrupts and FreeRTOS.",
+  about:"Move beyond Arduino sketches to professional firmware practice — timers, interrupts, communication buses and a real-time operating system.",
+  outline:["Embedded C essentials","GPIO, timers and interrupts","UART, I²C and SPI","FreeRTOS tasks and queues","Low-power design and OTA updates"],
+  gets:["A firmware project in your portfolio","Code templates","Debugging checklist","Mentor support throughout"],pre:"Basic C programming."},
+ {id:"custom",ic:"i-school",hue:175,name:"Custom Campus / Corporate Workshop",lv:"All levels",dur:"Flexible",mode:"On-campus · Online · Hybrid",aud:"Colleges, companies, communities",
+  line:"A session designed around your syllabus, group size and schedule.",
+  about:"Tell us your goals and we will design a workshop around them — any topic from this page, or a mix — delivered at your location or online.",
+  outline:["Topics chosen with you","Duration from a few hours to several days","Group size and kit planning","Faculty development and hackathon formats available"],
+  gets:["Tailored curriculum","Kits for every participant","Instructor and mentors","Follow-up support"],pre:"We adapt to your group's level."}
+];
+
+/* ---------- custom artwork for the first five products ---------- */
+const ART={
+ aquasense:`<svg viewBox="0 0 300 240" aria-hidden="true"><rect x="90" y="30" width="120" height="170" rx="22" fill="none" stroke="#7dd3fc" stroke-width="4"/><path d="M92 120c20-10 36 10 56 0s36-10 58 0v58a20 20 0 0 1-20 20H112a20 20 0 0 1-20-20z" fill="url(#lg)" opacity=".85"><animate attributeName="d" dur="3s" repeatCount="indefinite" values="M92 120c20-10 36 10 56 0s36-10 58 0v58a20 20 0 0 1-20 20H112a20 20 0 0 1-20-20z;M92 120c20 10 36-10 56 0s36 10 58 0v58a20 20 0 0 1-20 20H112a20 20 0 0 1-20-20z;M92 120c20-10 36 10 56 0s36-10 58 0v58a20 20 0 0 1-20 20H112a20 20 0 0 1-20-20z"/></path><text x="150" y="165" text-anchor="middle" fill="#fff" font-size="28" font-weight="700" style="font-family:'Space Grotesk'">72%</text><path d="M150 30V10M135 10h30" stroke="#7dd3fc" stroke-width="4" stroke-linecap="round"/></svg>`,
+ nxsw4:`<svg viewBox="0 0 300 240" aria-hidden="true"><rect x="40" y="50" width="220" height="140" rx="20" fill="#0a1a45" stroke="#60a5fa" stroke-width="3"/>${[0,1,2,3].map(i=>`<g transform="translate(${62+i*52} 80)"><rect width="38" height="62" rx="9" fill="#0c1a3a" stroke="${i%3==0?'#22d3ee':'#3b82f6'}" stroke-width="2.5"/><rect x="6" y="${i%3==0?8:34}" width="26" height="20" rx="6" fill="${i%3==0?'url(#lg)':'#334a7a'}"/><circle cx="19" cy="76" r="4" fill="${i%3==0?'#34d399':'#475b86'}"/></g>`).join("")}<text x="150" y="176" text-anchor="middle" fill="#9db0d3" font-size="12" letter-spacing="3" style="font-family:'JetBrains Mono'">NX-SW4 · 4CH</text></svg>`,
+ hridya:`<svg viewBox="0 0 300 240" aria-hidden="true"><path d="M20 120h60l16-50 28 100 22-70 14 20h120" fill="none" stroke="url(#lg)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="500" stroke-dashoffset="500"><animate attributeName="stroke-dashoffset" values="500;0;0" keyTimes="0;.7;1" dur="3s" repeatCount="indefinite"/></path><text x="150" y="205" text-anchor="middle" fill="#c4b5fd" font-size="14" letter-spacing="6" style="font-family:'JetBrains Mono'">HRIDYA</text></svg>`,
+ smartflow:`<svg viewBox="0 0 300 240" aria-hidden="true"><path d="M0 120h300M150 0v240" stroke="#1e3a6e" stroke-width="46"/><path d="M0 120h300M150 0v240" stroke="#3b82f6" stroke-width="2" stroke-dasharray="10 10" opacity=".7"/><rect x="120" y="92" width="14" height="22" rx="4" fill="#22d3ee"><animate attributeName="x" values="-20;320" dur="4s" repeatCount="indefinite"/></rect><rect x="166" y="130" width="14" height="22" rx="4" fill="#fbbf24"><animate attributeName="x" values="320;-20" dur="5s" repeatCount="indefinite"/></rect><rect x="136" y="-10" width="22" height="14" rx="4" fill="#f87171"><animate attributeName="y" values="-20;250" dur="4.5s" repeatCount="indefinite"/></rect><circle cx="190" cy="82" r="7" fill="#34d399"/><circle cx="110" cy="158" r="7" fill="#f87171"/></svg>`,
+ bands:`<svg viewBox="0 0 300 240" aria-hidden="true"><path d="M50 120a100 70 0 0 1 200 0" fill="none" stroke="#fbbf24" stroke-width="22" stroke-linecap="round" opacity=".9"/><circle cx="150" cy="50" r="16" fill="#0a1a45" stroke="#22d3ee" stroke-width="3"/><path d="M143 50a10 10 0 0 1 14 0M139 45a17 17 0 0 1 22 0" fill="none" stroke="#22d3ee" stroke-width="2.5" stroke-linecap="round"/><text x="150" y="190" text-anchor="middle" fill="#fcd34d" font-size="13" letter-spacing="4" style="font-family:'JetBrains Mono'">TAP · FIND · REUNITE</text></svg>`
+};
+const genArt=p=>`<svg viewBox="0 0 300 240" aria-hidden="true"><g fill="none" stroke="rgba(255,255,255,.22)" stroke-width="1.5"><circle cx="150" cy="120" r="52"/><circle cx="150" cy="120" r="84"/><circle cx="150" cy="120" r="116" stroke-dasharray="4 8"/></g><circle cx="150" cy="120" r="44" fill="url(#lg)"/><use href="#${p.ic}" x="124" y="94" width="52" height="52" stroke="#fff" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/><circle r="5" fill="#22d3ee"><animateMotion dur="7s" repeatCount="indefinite" path="M150 36a84 84 0 1 1 -.1 0"/></circle></svg>`;
+const artOf=p=>ART[p.id]||genArt(p);
+const bgOf=p=>`radial-gradient(ellipse at 28% 18%,hsl(${p.hue} 85% 40% / .55),transparent 62%),linear-gradient(135deg,hsl(${p.hue} 60% 13%),hsl(${(p.hue+35)%360} 70% 22%))`;
 
 /* ============ RENDER STATIC LISTS ============ */
 $("#svcGrid").innerHTML=SERVICES.map((s,i)=>`<article class="card rv d${i%3+1}"><div class="ico">${ic(s[0])}</div><h3>${s[1]}</h3><p>${s[2]}</p><div class="tags">${s[3].map(t=>`<span class="tag">${t}</span>`).join("")}</div></article>`).join("");
-$("#prodTeaser").innerHTML=PRODUCTS.slice(0,3).map((p,i)=>`<a class="card rv d${i+1}" href="#/products/${p.id}"><div class="ico">${ic(p.ic)}</div><span class="tag ${p.cls}">${p.stage}</span><h3 style="margin-top:14px">${p.name}</h3><p>${p.line}</p><span class="more">Learn more ${ic("i-arrow")}</span></a>`).join("");
-$("#solGrid").innerHTML=SOLUTIONS.map((s,i)=>`<article class="card rv d${i%3+1}"><div class="ico">${ic(s[0])}</div><h3>${s[1]}</h3><p>${s[2]}</p><a class="more" href="#/start">Plan this ${ic("i-arrow")}</a></article>`).join("");
 
-const art=(p)=>{ // distinctive generated product art
-  const g={
-   aquasense:`<svg viewBox="0 0 300 240"><rect x="90" y="30" width="120" height="170" rx="22" fill="none" stroke="#7dd3fc" stroke-width="4"/><path d="M92 120c20-10 36 10 56 0s36-10 58 0v58a20 20 0 0 1-20 20H112a20 20 0 0 1-20-20z" fill="url(#lg)" opacity=".85"><animate attributeName="d" dur="3s" repeatCount="indefinite" values="M92 120c20-10 36 10 56 0s36-10 58 0v58a20 20 0 0 1-20 20H112a20 20 0 0 1-20-20z;M92 120c20 10 36-10 56 0s36 10 58 0v58a20 20 0 0 1-20 20H112a20 20 0 0 1-20-20z;M92 120c20-10 36 10 56 0s36-10 58 0v58a20 20 0 0 1-20 20H112a20 20 0 0 1-20-20z"/></path><text x="150" y="165" text-anchor="middle" fill="#fff" font-size="28" font-weight="700" style="font-family:'Space Grotesk'">72%</text><path d="M150 30V10M135 10h30" stroke="#7dd3fc" stroke-width="4" stroke-linecap="round"/></svg>`,
-   nxsw4:`<svg viewBox="0 0 300 240"><rect x="40" y="50" width="220" height="140" rx="20" fill="#0a1a45" stroke="#60a5fa" stroke-width="3"/>${[0,1,2,3].map(i=>`<g transform="translate(${62+i*52} 80)"><rect width="38" height="62" rx="9" fill="#0c1a3a" stroke="${i%3==0?'#22d3ee':'#3b82f6'}" stroke-width="2.5"/><rect x="6" y="${i%3==0?8:34}" width="26" height="20" rx="6" fill="${i%3==0?'url(#lg)':'#334a7a'}"/><circle cx="19" cy="76" r="4" fill="${i%3==0?'#34d399':'#475b86'}"/></g>`).join("")}<text x="150" y="176" text-anchor="middle" fill="#9db0d3" font-size="12" letter-spacing="3" style="font-family:'JetBrains Mono'">NX-SW4 · 4CH</text></svg>`,
-   hridya:`<svg viewBox="0 0 300 240"><path d="M20 120h60l16-50 28 100 22-70 14 20h120" fill="none" stroke="url(#lg)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="500" stroke-dashoffset="500"><animate attributeName="stroke-dashoffset" values="500;0;0" keyTimes="0;.7;1" dur="3s" repeatCount="indefinite"/></path><text x="150" y="205" text-anchor="middle" fill="#c4b5fd" font-size="14" letter-spacing="6" style="font-family:'JetBrains Mono'">HRIDYA</text></svg>`,
-   smartflow:`<svg viewBox="0 0 300 240"><path d="M0 120h300M150 0v240" stroke="#1e3a6e" stroke-width="46"/><path d="M0 120h300M150 0v240" stroke="#3b82f6" stroke-width="2" stroke-dasharray="10 10" opacity=".7"/><rect x="120" y="92" width="14" height="22" rx="4" fill="#22d3ee"><animate attributeName="x" values="-20;320" dur="4s" repeatCount="indefinite"/></rect><rect x="166" y="130" width="14" height="22" rx="4" fill="#fbbf24"><animate attributeName="x" values="320;-20" dur="5s" repeatCount="indefinite"/></rect><rect x="136" y="-10" width="22" height="14" rx="4" fill="#f87171"><animate attributeName="y" values="-20;250" dur="4.5s" repeatCount="indefinite"/></rect><circle cx="190" cy="82" r="7" fill="#34d399"/><circle cx="110" cy="158" r="7" fill="#f87171"/></svg>`,
-   bands:`<svg viewBox="0 0 300 240"><path d="M50 120a100 70 0 0 1 200 0" fill="none" stroke="#fbbf24" stroke-width="22" stroke-linecap="round" opacity=".9"/><circle cx="150" cy="50" r="16" fill="#0a1a45" stroke="#22d3ee" stroke-width="3"/><path d="M143 50a10 10 0 0 1 14 0M139 45a17 17 0 0 1 22 0" fill="none" stroke="#22d3ee" stroke-width="2.5" stroke-linecap="round"/><text x="150" y="190" text-anchor="middle" fill="#fcd34d" font-size="13" letter-spacing="4" style="font-family:'JetBrains Mono'">TAP · FIND · REUNITE</text></svg>`};
-  return g[p.id];
-};
-$("#prodList").innerHTML=PRODUCTS.map(p=>`<article class="prod" id="p-${p.id}" data-cls="${p.cls}"><div class="prod-art ${p.art} rv">${art(p)}</div><div class="rv d1"><span class="tag ${p.cls}">${p.stage}</span><h3>${p.name}</h3><p class="lead" style="font-size:17px">${p.line}</p><ul>${p.pts.map(x=>`<li>${x}</li>`).join("")}</ul><div class="tags">${p.tags.map(t=>`<span class="tag">${t}</span>`).join("")}</div><div style="margin-top:26px"><a class="btn ghost sm" href="#/start?type=project&topic=${encodeURIComponent(p.name)}">Ask about ${p.name.split(" ")[0]} ${ic("i-arrow","arr")}</a></div></div></article>`).join("");
+const prodCard=(p,i=0)=>`<a class="card pcard rv d${i%3+1}" href="#/products/${p.id}" aria-label="${esc(p.name)} details"><div class="pc-art" style="background:${bgOf(p)}">${artOf(p)}</div><div class="pc-b"><div><span class="tag ${p.cls}">${p.stage}</span></div><h3>${p.name}</h3><p>${p.line}</p><div class="tags">${p.tech.slice(0,3).map(t=>`<span class="tag">${TECH[t]}</span>`).join("")}</div><span class="more">View details &amp; order ${ic("i-arrow")}</span></div></a>`;
+$("#prodTeaser").innerHTML=["nxsw4","aquasense","visionedge"].map((id,i)=>prodCard(PRODUCTS.find(p=>p.id===id),i)).join("");
+
+const wkCard=(w,i=0)=>`<a class="card rv d${i%3+1}" href="#/workshops/${w.id}" aria-label="${esc(w.name)} details"><div class="tl-ico"><div class="ico">${ic(w.ic)}</div><span class="tag ${w.lv==="Beginner"?"live":w.lv==="Intermediate"?"dev":"con"}">${w.lv}</span></div><h3>${w.name}</h3><p>${w.line}</p><div class="wk-meta"><span>${w.dur}</span><span>${w.mode}</span></div><span class="more">Details &amp; register ${ic("i-arrow")}</span></a>`;
+$("#wkTeaser").innerHTML=["esp32","arduino","robotics"].map((id,i)=>wkCard(WORKSHOPS.find(w=>w.id===id),i)).join("");
+$("#solGrid").innerHTML=SOLUTIONS.map((s,i)=>`<a class="card rv d${i%3+1}" href="#/solutions/${s.id}"><div class="ico">${ic(s.ic)}</div><h3>${s.name}</h3><p>${s.line}</p><span class="more">What we deliver ${ic("i-arrow")}</span></a>`).join("");
+
+/* products: filter + search */
+const PF={tech:"all",q:""};
+function renderProducts(){
+  const counts={all:PRODUCTS.length};Object.keys(TECH).forEach(k=>counts[k]=PRODUCTS.filter(p=>p.tech.includes(k)).length);
+  $("#prodFilters").innerHTML=[["all","All"],...Object.entries(TECH)].map(([k,l])=>`<button class="tab" role="tab" data-f="${k}" aria-selected="${PF.tech===k}">${l}<span class="n">${counts[k]}</span></button>`).join("");
+  const q=PF.q.trim().toLowerCase();
+  const list=PRODUCTS.filter(p=>(PF.tech==="all"||p.tech.includes(PF.tech))&&(!q||(p.name+" "+p.line+" "+p.stack.join(" ")+" "+p.tech.map(t=>TECH[t]).join(" ")).toLowerCase().includes(q)));
+  $("#prodGrid").innerHTML=list.map((p,i)=>prodCard(p,i).replace("rv ","rv in ")).join("");
+  $("#prodEmpty").hidden=list.length>0;
+  $("#prodCount").textContent=`Showing ${list.length} of ${PRODUCTS.length} products`;
+}
+$("#prodFilters").addEventListener("click",e=>{const b=e.target.closest(".tab");if(!b)return;PF.tech=b.dataset.f;renderProducts()});
+$("#prodSearch").addEventListener("input",e=>{PF.q=e.target.value;renderProducts()});
+$("#prodReset").onclick=()=>{PF.tech="all";PF.q="";$("#prodSearch").value="";renderProducts()};
+renderProducts();
+
+/* workshops: filter */
+const WF={lv:"all"};
+function renderWorkshops(){
+  const opts=[["all","All sessions"],["Beginner","Beginner"],["Intermediate","Intermediate"],["All levels","Custom"]];
+  $("#wkFilters").innerHTML=opts.map(([k,l])=>`<button class="tab" role="tab" data-f="${k}" aria-selected="${WF.lv===k}">${l}</button>`).join("");
+  $("#wkGrid").innerHTML=WORKSHOPS.filter(w=>WF.lv==="all"||w.lv===WF.lv).map((w,i)=>wkCard(w,i).replace("rv ","rv in ")).join("");
+}
+$("#wkFilters").addEventListener("click",e=>{const b=e.target.closest(".tab");if(!b)return;WF.lv=b.dataset.f;renderWorkshops()});
+renderWorkshops();
+$("#wkStats").innerHTML=[["8","session formats"],["1–3","days per session"],["3","delivery modes"],["Hands-on","every session builds a project"]].map(s=>`<div class="stat"><b>${s[0]}</b><span>${s[1]}</span></div>`).join("");
 
 /* ============ ROUTER ============ */
-const ROUTES=["home","products","solutions","technology","demo","learn","about","contact","start","404"];
-const LEGACY={about:"about",services:"home",products:"products",projects:"products",workshops:"learn",careers:"learn",contact:"contact",home:"home"};
+const ROUTES=["home","products","solutions","workshops","technology","demo","about","careers","contact","start","404"];
+const LEGACY={services:"home",projects:"products",learn:"workshops",workshop:"workshops",career:"careers"};
+const KINDS={products:()=>PRODUCTS,solutions:()=>SOLUTIONS,workshops:()=>WORKSHOPS};
 let current=null;
 function parseHash(){
-  let h=location.hash.replace(/^#\/?/,"");
+  const h=location.hash.replace(/^#\/?/,"");
   const [path,qs=""]=h.split("?");
-  const parts=path.split("/").filter(Boolean);
+  const parts=path.split("/").filter(Boolean).map(s=>{try{return decodeURIComponent(s)}catch(e){return s}});
   let route=parts[0]||"home";
   if(!ROUTES.includes(route)) route=LEGACY[route]||"404";
-  return {route,sub:parts[1]||"",q:new URLSearchParams(qs)};
+  return {route,sub:parts[1]||"",view:parts[2]||"",q:new URLSearchParams(qs)};
 }
 function go(){
-  const {route,sub,q}=parseHash();
+  const {route,sub,view,q}=parseHash();
+  if(route==="start"&&q.get("type")){ location.replace("#/contact?type="+q.get("type")+(q.get("role")?"&role="+encodeURIComponent(q.get("role")):"")+(q.get("topic")?"&topic="+encodeURIComponent(q.get("topic")):"")); return; }
   const page=$(`.page[data-route="${route}"]`);
   const bar=$("#progress"); bar.style.opacity=1; bar.style.width="70%";
   $$(".page").forEach(p=>p.classList.toggle("active",p===page));
   document.title=page.dataset.title;
   $$(".links a").forEach(a=>a.classList.toggle("active",a.dataset.r===route||(route==="start"&&a.dataset.r==="contact")));
   $("#links").classList.remove("open"); $("#burger").setAttribute("aria-expanded","false");
-  if(current!==route||!sub){ window.scrollTo({top:0,behavior:"instant"}); }
+  if(current!==route){ window.scrollTo({top:0,behavior:"instant"}); }
   observe(page);
   if(route==="demo") startDemo(); else stopDemo();
   if(route==="home") startNet(); else stopNet();
-  if(route==="contact") applyTab(q.get("type")||"contact");
-  if(route==="start" && q.get("type")) { location.hash="#/contact?type="+q.get("type")+(q.get("role")?"&role="+encodeURIComponent(q.get("role")):"")+(q.get("topic")?"&topic="+encodeURIComponent(q.get("topic")):""); return; }
-  if(route==="contact"){ if(q.get("role")) $("#f-extra").value=q.get("role"); if(q.get("topic")&&!$("#f-msg").value) $("#f-msg").value="I'd like to know more about "+q.get("topic")+"."; }
-  if(route==="products"&&sub){ setTimeout(()=>{const el=$("#p-"+sub); if(el) el.scrollIntoView({behavior:"smooth",block:"start"});},120); }
+  if(route==="contact"){ applyTab(q.get("type")||"contact"); if(q.get("role")) $("#f-extra").value=q.get("role"); if(q.get("topic")&&!$("#f-msg").value) $("#f-msg").value="I'd like to know more about "+q.get("topic")+"."; }
+  if(KINDS[route]&&sub) openDetail(route,sub,view); else closeModal();
   current=route;
   setTimeout(()=>{bar.style.width="100%";setTimeout(()=>{bar.style.opacity=0;bar.style.width="0"},350)},120);
 }
 addEventListener("hashchange",go);
+
+/* ============ DETAIL POP-UPS (products · solutions · workshops) ============ */
+const M={open:false,route:"",item:null,last:null};
+const modalEl=$("#modal"),mPanel=$("#mPanel"),mScroll=$("#mScroll"),mFoot=$("#mFoot");
+const tagsOf=ts=>ts.map(t=>`<span class="tag">${t}</span>`).join("");
+const listOf=a=>`<ul class="m-list">${a.map(x=>`<li>${x}</li>`).join("")}</ul>`;
+const specOf=rows=>`<div class="spec">${rows.map(r=>`<div><span>${r[0]}</span><b>${r[1]}</b></div>`).join("")}</div>`;
+const lvCls=l=>l==="Beginner"?"live":l==="Intermediate"?"dev":"con";
+
+function detailView(route,it){
+  if(route==="products") return `<div class="m-head"><div class="m-art" style="background:${bgOf(it)}">${artOf(it)}</div><div class="m-title"><span class="tag ${it.cls}">${it.stage}</span><h2 id="mTitle">${it.name}</h2><p>${it.about}</p><div class="tags">${tagsOf(it.tech.map(t=>TECH[t]))}</div></div></div>
+  <div class="m-body"><div><h4>Key features</h4>${listOf(it.feats)}</div><div><h4>Specifications</h4>${specOf(it.specs)}<p class="note" style="margin-top:10px">Planned specifications — subject to change.</p></div><div><h4>Where it fits</h4>${listOf(it.use)}</div><div><h4>Built with</h4><div class="chips">${it.stack.map(s=>`<span class="chip">${s}</span>`).join("")}</div></div></div>`;
+  if(route==="workshops"){ const batch=(NEXORA.batches||{})[it.id]||"Dates on request";
+    return `<div class="m-head"><div class="m-art" style="background:${bgOf(it)}">${genArt(it)}</div><div class="m-title"><span class="tag ${lvCls(it.lv)}">${it.lv}</span><h2 id="mTitle">${it.name}</h2><p>${it.about}</p><div class="tags">${tagsOf([it.dur,it.mode])}</div></div></div>
+  <div class="m-body"><div><h4>What you'll cover</h4>${listOf(it.outline)}</div><div><h4>What you get</h4>${listOf(it.gets)}</div><div class="full"><h4>Session details</h4>${specOf([["Duration",it.dur],["Level",it.lv],["Mode",it.mode],["Who it's for",it.aud],["Prerequisites",it.pre],["Next batch",batch],["Fee","Shared on registration"]])}</div></div>`; }
+  const rel=it.products.map(id=>PRODUCTS.find(p=>p.id===id)).filter(Boolean);
+  return `<div class="m-head"><div class="m-art" style="background:${bgOf({hue:210})}">${genArt(it)}</div><div class="m-title"><span class="tag con">Solution</span><h2 id="mTitle">${it.name}</h2><p>${it.line}</p></div></div>
+  <div class="m-body"><div><h4>What it does</h4>${listOf(it.does)}</div><div><h4>What we deliver</h4>${listOf(it.deliver)}</div>${rel.length?`<div class="full"><h4>Related products</h4><div class="chips">${rel.map(p=>`<a class="chip" href="#/products/${p.id}">${p.name} →</a>`).join("")}</div></div>`:""}</div>`;
+}
+function footView(route,it){
+  const cta={products:["order","Order / Enquire"],workshops:["register",it.id==="custom"?"Request this workshop":"Register now"],solutions:["request","Request this solution"]}[route];
+  return `<div class="l"><a class="btn primary" href="#/${route}/${it.id}/${cta[0]}">${cta[1]} <svg class="arr"><use href="#i-arrow"/></svg></a><button class="btn ghost" type="button" data-copy>Copy link</button></div><span class="note" style="margin:0">${route==="products"?"Stage: "+it.stage:route==="workshops"?it.dur+" · "+it.mode:"Tell us your need — we reply with a plan"}</span>`;
+}
+
+/* ---- form definitions for each pop-up ---- */
+const FLD={
+ name:{n:"name",l:"Full name",t:"text",req:1,ac:"name"},
+ email:{n:"email",l:"Email",t:"email",req:1,ac:"email"},
+ phone:{n:"phone",l:"Phone",t:"tel",ac:"tel"},
+ phoneReq:{n:"phone",l:"Phone",t:"tel",ac:"tel",req:1},
+ org:{n:"organisation",l:"Organisation",t:"text",ac:"organization"}
+};
+const selF=(n,l,opts,extra={})=>({n,l,t:"select",opts,...extra});
+function formCfg(route,it){
+  if(route==="products") return {type:"product_order",title:`Order or enquire — ${it.name}`,sub:it.cls==="dev"||it.cls==="con"?"Tell us what you need. For products still in development this pre-books your interest and we'll share timelines and pricing.":"Tell us what you need and we'll reply with details.",btn:"Send request",
+    rows:[[FLD.name,FLD.email],[FLD.phone,FLD.org],[selF("extra","I would like to",["Place an order / pre-book","Request a quote","Book a demo","General enquiry"]),{n:"quantity",l:"Quantity",t:"number",min:1,value:1}],[{n:"message",l:"Message",t:"textarea",ph:"Your requirement, location, timeline…"}]]};
+  if(route==="workshops"){ const c=it.id==="custom";
+    return {type:"workshop_registration",title:c?"Request a custom workshop":`Register — ${it.name}`,sub:c?"Tell us your topics, group size and preferred dates. We'll design the session with you.":`${it.dur} · ${it.mode}. Send your details and we'll confirm the next batch, fee and joining details.`,btn:c?"Send request":"Register now",
+    rows:[[FLD.name,FLD.email],[FLD.phoneReq,{...FLD.org,l:"College / company",req:1}],[selF("extra","I am a",["Student","Faculty / Teacher","Working professional","Other"]),{n:"quantity",l:c?"Approx. participants":"Participants",t:"number",min:1,value:1,req:1}],[selF("mode","Preferred mode",["On-campus (my institute)","Online","Either is fine"]),{n:"date",l:"Preferred dates (optional)",t:"text",ph:"e.g. mid-December"}],[{n:"message",l:c?"Topics & requirements":"Anything we should know? (optional)",t:"textarea",ph:c?"Topics, level, group size, location…":"",req:c}]]}; }
+  return {type:"solution_request",title:`Request — ${it.name}`,sub:"Describe what you want to achieve and we'll come back with an approach.",btn:"Send request",
+    rows:[[FLD.name,FLD.email],[FLD.phone,FLD.org],[selF("extra","Timeline",["As soon as possible","Within 1–3 months","In 3–6 months","Just exploring"]),{n:"quantity",l:"Approx. devices / sites",t:"text",ph:"e.g. 20 devices, 2 sites"}],[{n:"message",l:"What do you want to solve?",t:"textarea",req:1,ph:"Describe your use case…"}]]};
+}
+function fieldHTML(f,p){
+  const id=p+f.n,req=f.req?" required":"",lab=`<label for="${id}">${f.l}${f.req?" *":""}</label>`;
+  let c;
+  if(f.t==="select") c=`<select id="${id}" name="${f.n}">${f.opts.map(o=>`<option>${esc(o)}</option>`).join("")}</select>`;
+  else if(f.t==="textarea") c=`<textarea id="${id}" name="${f.n}" placeholder="${esc(f.ph||"")}"${req}></textarea>`;
+  else c=`<input id="${id}" name="${f.n}" type="${f.t}"${f.min!=null?` min="${f.min}"`:""}${f.value!=null?` value="${f.value}"`:""}${f.ph?` placeholder="${esc(f.ph)}"`:""}${f.ac?` autocomplete="${f.ac}"`:""}${req}>`;
+  return `<div class="fld">${lab}${c}</div>`;
+}
+const rowsHTML=(rows,p)=>rows.map(r=>r.length>1?`<div class="two">${r.map(f=>fieldHTML(f,p)).join("")}</div>`:fieldHTML(r[0],p)).join("");
+function formView(route,it){
+  const c=formCfg(route,it);
+  return `<div class="m-form"><a class="back-link" href="#/${route}/${it.id}">← Back to details</a><h3 id="mTitle">${c.title}</h3><p class="sub">${c.sub}</p>
+  <form id="mForm" novalidate>${rowsHTML(c.rows,"m-")}<div style="display:none" aria-hidden="true"><input name="website" tabindex="-1" autocomplete="off"></div><button class="btn primary" type="submit">${c.btn} <svg class="arr"><use href="#i-arrow"/></svg></button><p class="note">We'll email you a confirmation. Your details are used only to respond to this request.</p></form></div>`;
+}
+
+function openDetail(route,id,view){
+  const it=KINDS[route]().find(x=>x.id===id);
+  if(!it){ location.replace("#/"+route); return; }
+  if(!M.open) M.last=document.activeElement;
+  M.open=true;M.route=route;M.item=it;
+  modalEl.classList.add("open");document.body.classList.add("m-lock");
+  const isForm=!!view;
+  mScroll.innerHTML=isForm?formView(route,it):detailView(route,it);
+  mFoot.hidden=isForm; if(!isForm) mFoot.innerHTML=footView(route,it);
+  mScroll.scrollTop=0;
+  document.title=it.name+" | Nexora IoT Solutions";
+  if(isForm){ const c=formCfg(route,it);
+    bindForm($("#mForm"),{type:c.type,item:it.name,onDone:(res,d)=>{ mScroll.innerHTML=successView(res,d,route,it); mScroll.scrollTop=0; }}); }
+  setTimeout(()=>mPanel.focus({preventScroll:true}),30);
+}
+function closeModal(){
+  if(!M.open)return; M.open=false; modalEl.classList.remove("open"); document.body.classList.remove("m-lock");
+  try{M.last&&M.last.focus&&M.last.focus({preventScroll:true})}catch(e){}
+}
+const closeByUser=()=>{ location.hash="#/"+M.route; };
+$("#mBack").onclick=closeByUser; $("#mClose").onclick=closeByUser;
+addEventListener("keydown",e=>{
+  if(!M.open||$("#cmd").classList.contains("open"))return;
+  if(e.key==="Escape"){closeByUser();return}
+  if(e.key==="Tab"){const f=$$('a[href],button:not([disabled]),input:not([tabindex="-1"]),select,textarea',mPanel).filter(x=>x.offsetParent!==null);if(!f.length)return;
+    const a=f[0],z=f[f.length-1];if(e.shiftKey&&(document.activeElement===a||document.activeElement===mPanel)){e.preventDefault();z.focus()}else if(!e.shiftKey&&document.activeElement===z){e.preventDefault();a.focus()}}
+});
+document.addEventListener("click",e=>{
+  const cp=e.target.closest("[data-copy]");
+  if(cp){const url=location.href.replace(/\/(order|register|request)$/,"");(navigator.clipboard?navigator.clipboard.writeText(url):Promise.reject()).then(()=>toast("Link copied"),()=>toast(url));}
+  const sc=e.target.closest("[data-scroll]"); if(sc){$(sc.dataset.scroll)?.scrollIntoView({behavior:"smooth",block:"start"})}
+});
+
+function successView(res,d,route,it){
+  const title=route==="workshops"?(it.id==="custom"?"Request received":"You're registered"):"Request received";
+  const msg=res.via==="server"
+    ?`We've emailed a confirmation to <b>${esc(d.email)}</b> and our team has been notified. We'll get back to you soon.`
+    :`Your email app should now open with your details ready — just press <b>Send</b>. If nothing opened, write to <b>${esc(NEXORA.email)}</b> and quote the reference below.`;
+  return `<div class="success"><div class="ok-ic"><svg><use href="#i-check"/></svg></div><h3>${title}</h3><p>${msg}</p><div class="refbox">Ref · ${res.ref}</div><p class="note" style="justify-content:center;margin-top:0">${esc(it.name)}</p><div class="cta-row" style="justify-content:center;margin-top:22px"><a class="btn primary" href="#/${route}">Back to ${route}</a><a class="btn ghost" href="#/home">Home</a></div></div>`;
+}
+
+/* ============ SHARED FORM ENGINE ============ */
+async function sendSubmission(p){
+  p.ref="NX-"+Math.random().toString(36).slice(2,8).toUpperCase();
+  p.page=location.href.slice(0,280);
+  if(NEXORA.formEndpoint){
+    try{
+      const ac=new AbortController(),t=setTimeout(()=>ac.abort(),15000);
+      // text/plain keeps this a "simple" request, so the Apps Script web app accepts it without a CORS preflight
+      await fetch(NEXORA.formEndpoint,{method:"POST",mode:"no-cors",signal:ac.signal,headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify(p)});
+      clearTimeout(t);
+      return {via:"server",ref:p.ref};
+    }catch(e){ toast("Couldn't reach the server — opening your email app instead."); }
+  }
+  const L=[["Type",p.type],["Reference",p.ref],["Item",p.item],["Name",p.name],["Email",p.email],["Phone",p.phone],["Organisation",p.organisation],["Detail",p.extra],["Quantity / participants",p.quantity],["Mode",p.mode],["Preferred date",p.date]].filter(x=>x[1]);
+  const body=L.map(x=>x[0]+": "+x[1]).join("\n")+"\n\nMessage:\n"+(p.message||"");
+  location.href=`mailto:${NEXORA.email}?subject=${encodeURIComponent("[Nexora] "+p.type.replace(/_/g," ")+(p.item?" — "+p.item:"")+" — "+p.name)}&body=${encodeURIComponent(body)}`;
+  return {via:"mail",ref:p.ref};
+}
+function bindForm(form,{type,item,onDone}){
+  form.addEventListener("input",e=>e.target.classList.remove("bad"));
+  form.addEventListener("submit",async e=>{
+    e.preventDefault();
+    const d={};new FormData(form).forEach((v,k)=>d[k]=String(v).trim());
+    if(d.website)return; // honeypot
+    let bad=null;
+    $$("[name]",form).forEach(el=>{
+      let ok=true;const v=el.value.trim();
+      if(el.required&&!v)ok=false;
+      if(el.type==="email"&&!/^\S+@\S+\.\S+$/.test(v))ok=false;
+      if(el.type==="number"&&el.min&&(+v<+el.min||v===""))ok=false;
+      el.classList.toggle("bad",!ok);el.setAttribute("aria-invalid",!ok);
+      if(!ok&&!bad)bad=el;
+    });
+    if(bad){toast("Please fix the highlighted fields.");bad.focus();return}
+    const btn=form.querySelector("button[type=submit]"),old=btn.innerHTML;btn.disabled=true;btn.textContent="Sending…";
+    const res=await sendSubmission({...d,type:typeof type==="function"?type():type,item:typeof item==="function"?item(d):(item||"")});
+    btn.disabled=false;btn.innerHTML=old;
+    onDone(res,d);
+  });
+}
 
 /* reveal on scroll */
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target);const c=e.target.querySelectorAll?.("[data-count]");c&&c.forEach(countUp);if(e.target.dataset?.count)countUp(e.target);}}),{threshold:.12,rootMargin:"0px 0px -40px 0px"});
@@ -965,47 +1456,92 @@ function stopNet(){netOn=false;cancelAnimationFrame(netRAF)}
 setInterval(()=>{const n=$("#hcN");if(n&&$(".page.active")?.dataset.route==="home"){n.textContent=126+Math.floor(Math.random()*5);$("#hcA").textContent="LEVEL "+(68+Math.floor(Math.random()*9))+"%"}},2500);
 
 /* ============ LIVE DEMO ============ */
-let demoT=0,demoRAF=0,demoInit=false;
-const D={temp:27,tempHist:[],powHist:[],tank:50,auto:true,pump:false,ch:[{n:"Living room light",w:40,on:true},{n:"Ceiling fan",w:75,on:false},{n:"Geyser",w:1500,on:false},{n:"Garden pump",w:370,on:false}]};
-function logEv(msg,cls=""){const l=$("#log");const t=new Date().toLocaleTimeString([], {hour12:false});const d=document.createElement("div");d.innerHTML=`<time>${t}</time><span class="${cls}">${msg}</span>`;l.prepend(d);while(l.children.length>7)l.lastChild.remove()}
+let demoT=0,demoInit=false;
+const IL={
+ light:`<svg class="il" viewBox="0 0 120 90" aria-hidden="true"><circle class="glow" cx="60" cy="38" r="42" fill="url(#gl)"/><path class="bulb st" d="M60 12a21 21 0 0 0-11 39v7h22v-7A21 21 0 0 0 60 12z"/><path class="st" d="M52 64h16M54 71h12"/><path class="rays" d="M60 3v5M22 14l4 4M98 14l-4 4M12 38h5M103 38h5"/></svg>`,
+ fan:`<svg class="il" viewBox="0 0 120 90" aria-hidden="true"><path class="st" d="M60 2v30"/><g class="rotor"><ellipse cx="60" cy="26" rx="9" ry="17"/><ellipse cx="60" cy="26" rx="9" ry="17" transform="rotate(120 60 44)"/><ellipse cx="60" cy="26" rx="9" ry="17" transform="rotate(240 60 44)"/></g><circle cx="60" cy="44" r="7" fill="var(--ln)"/></svg>`,
+ geyser:`<svg class="il" viewBox="0 0 120 90" aria-hidden="true"><rect class="gbody st" x="34" y="8" width="48" height="70" rx="12"/><path class="st" d="M46 78v8M70 78v8"/><circle class="st" cx="58" cy="30" r="8"/><path class="st" d="M58 30l4-4"/><path class="steam" d="M96 56c-5-5 5-9 0-15"/><path class="steam s2" d="M106 60c-5-5 5-9 0-15"/></svg>`,
+ sprink:`<svg class="il" viewBox="0 0 120 90" aria-hidden="true"><path class="st" d="M60 88V62M50 88h20"/><circle class="st" cx="60" cy="56" r="5"/><path class="st" d="M60 51v-8l12-7"/><circle class="drop" cx="78" cy="36" r="2.8"/><circle class="drop d2" cx="88" cy="40" r="2.8"/><circle class="drop d3" cx="98" cy="45" r="2.8"/><circle class="drop d2" cx="44" cy="36" r="2.8"/><circle class="drop d3" cx="34" cy="42" r="2.8"/></svg>`
+};
+const D0=()=>({temp:27,amb:0,tank:50,pump:false,kwh:0,auto:true,gTimer:true,heat:true,gOn:0,heatAlerted:false,hover:-1,tH:[],pH:[],preset:"",
+ ch:[{n:"Living room light",k:"light",w:40,on:true},{n:"Ceiling fan",k:"fan",w:75,on:false},{n:"Water geyser",k:"geyser",w:1500,on:false},{n:"Garden sprinkler",k:"sprink",w:370,on:false}]});
+let D=D0();
+const PRESETS={
+ evening:{n:"Evening",ch:[1,1,0,0],amb:0},
+ night:{n:"Night",ch:[0,0,0,0],amb:-1.5},
+ hot:{n:"Hot day",ch:[1,1,1,0],amb:5.5},
+ away:{n:"Away",ch:[0,0,0,0],amb:1}
+};
+function logEv(msg,cls=""){const l=$("#log");const t=new Date().toLocaleTimeString([],{hour12:false});const d=document.createElement("div");if(cls)d.className=cls;d.innerHTML=`<time>${t}</time><span>${msg}</span>`;l.prepend(d);while(l.children.length>7)l.lastChild.remove()}
 function power(){return D.ch.reduce((a,c)=>a+(c.on?c.w:0),0)+(D.pump?750:0)}
-function renderChan(){ $("#chan").innerHTML=D.ch.map((c,i)=>`<div class="ch ${c.on?"on":""}"><div class="ch-top"><b>CH${i+1}</b><button class="switch" role="switch" aria-checked="${c.on}" aria-label="Channel ${i+1} ${c.n}" data-i="${i}"></button></div><div><b style="font-weight:500">${c.n}</b><small>${c.on?c.w+" W":"0 W"} · ${c.on?"ON":"OFF"}</small></div></div>`).join("") }
-function renderTank(){ $("#tFill").style.height=D.tank+"%";$("#tPct").textContent=Math.round(D.tank)+"%";$("#pumpState").textContent=D.pump?"ON":"OFF";$("#pumpState").style.color=D.pump?"var(--ok)":"";$("#autoSw").setAttribute("aria-checked",D.auto) }
-function demoInitOnce(){
-  if(demoInit)return;demoInit=true;renderChan();renderTank();
-  $("#chan").addEventListener("click",e=>{const b=e.target.closest(".switch");if(!b)return;const c=D.ch[+b.dataset.i];c.on=!c.on;renderChan();logEv(`CH${+b.dataset.i+1} ${c.n} → ${c.on?"ON":"OFF"}`,c.on?"ok":"");});
-  $("#autoSw").onclick=()=>{D.auto=!D.auto;renderTank();logEv(`Auto mode ${D.auto?"enabled":"disabled"}`)};
-  $("#tankIn").oninput=e=>{D.tank=+e.target.value;checkTank();renderTank()};
-  logEv("Gateway connected · 4 devices online","ok");
+function renderTiles(){
+  $("#tiles").innerHTML=D.ch.map((c,i)=>`<button class="tile" type="button" data-i="${i}" aria-pressed="false" aria-label="Channel ${i+1}: ${c.n}"><div class="tile-top"><span>${c.n}</span><small>CH${i+1}</small></div>${IL[c.k]}<div class="tile-foot"><span>${c.w} W</span><b></b></div></button>`).join("");
+  updateTiles();
 }
+function updateTiles(){
+  $$("#tiles .tile").forEach((t,i)=>{const c=D.ch[i];t.classList.toggle("on",c.on);t.setAttribute("aria-pressed",c.on);t.querySelector(".tile-foot b").textContent=c.on?"ON":"OFF"});
+  $$(".pre").forEach(b=>b.classList.toggle("act",b.dataset.s===D.preset));
+}
+function renderTank(){
+  $("#tFill").style.height=D.tank+"%";$("#tPct").textContent=Math.round(D.tank)+"%";$("#tLvl").textContent=Math.round(D.tank)+"%";
+  const c=$("#pumpChip");c.textContent=D.pump?"PUMP ON":"PUMP OFF";c.classList.toggle("on",D.pump);
+  $("#tFlow").textContent=D.pump?"filling · +1.8 %/s":"idle";
+  $("#ruleAuto").setAttribute("aria-checked",D.auto);$("#ruleGeyser").setAttribute("aria-checked",D.gTimer);$("#ruleHeat").setAttribute("aria-checked",D.heat);
+}
+function applyPreset(k){
+  if(k==="reset"){const keep=D.tH.length;D=D0();prefill();renderTiles();renderTank();logEv("Demo reset to defaults");return}
+  const p=PRESETS[k];D.ch.forEach((c,i)=>c.on=!!p.ch[i]);D.amb=p.amb;D.preset=k;D.gOn=0;updateTiles();logEv(`Scenario: ${p.n}`,"ok");
+}
+function demoInitOnce(){
+  if(demoInit)return;demoInit=true;renderTiles();renderTank();prefill();
+  $("#tiles").addEventListener("click",e=>{const b=e.target.closest(".tile");if(!b)return;const c=D.ch[+b.dataset.i];c.on=!c.on;D.preset="";if(c.k==="geyser")D.gOn=0;updateTiles();logEv(`CH${+b.dataset.i+1} ${c.n} → ${c.on?"ON":"OFF"}`,c.on?"ok":"")});
+  $$(".pre").forEach(b=>b.onclick=()=>applyPreset(b.dataset.s));
+  const tg=(id,key,label)=>$(id).onclick=()=>{D[key]=!D[key];renderTank();logEv(`${label} ${D[key]?"enabled":"disabled"}`)};
+  tg("#ruleAuto","auto","Auto-pump rule");tg("#ruleGeyser","gTimer","Geyser safety timer");tg("#ruleHeat","heat","Heat alert");
+  $("#tankIn").oninput=e=>{D.tank=+e.target.value;checkTank();renderTank()};
+  const cv=$("#chart"),tip=$("#tip");
+  const move=e=>{const r=cv.getBoundingClientRect(),x=(e.touches?e.touches[0].clientX:e.clientX)-r.left,L=40,R=40,W=r.width-L-R;D.hover=Math.max(0,Math.min(59,Math.round((x-L)/W*59)));drawChart();
+    const i=D.hover,tx=L+W*(i/59),n=D.pH.length,k=i-(60-n);if(k>=0&&k<n){tip.hidden=false;tip.innerHTML=`<b style="color:#a78bfa">${D.pH[k]} W</b><br><b style="color:#22d3ee">${D.tH[k].toFixed(1)} °C</b>`;tip.style.left=Math.min(r.width-96,Math.max(0,tx-40))+"px"}};
+  cv.addEventListener("pointermove",move);cv.addEventListener("pointerleave",()=>{D.hover=-1;tip.hidden=true;drawChart()});
+  logEv("Gateway connected · 3 devices online","ok");
+}
+function prefill(){D.tH=[];D.pH=[];for(let i=0;i<60;i++){D.tH.push(D.temp+(Math.random()-.5)*.15);D.pH.push(power())}}
 function checkTank(){ if(!D.auto)return; if(D.tank<25&&!D.pump){D.pump=true;logEv("Level low → pump ON (rule)","wr")} else if(D.tank>90&&D.pump){D.pump=false;logEv("Tank full → pump OFF (rule)","ok")} }
 function tick(){
-  // temperature drifts with load
-  const target=26+power()/900; D.temp+=(target-D.temp)*.08+(Math.random()-.5)*.25;
-  // tank: pump fills, usage drains
-  if(D.pump)D.tank=Math.min(100,D.tank+1.8); else D.tank=Math.max(0,D.tank-.25);
-  $("#tankIn").value=D.tank;
-  checkTank();renderTank();
-  D.tempHist.push(D.temp);D.powHist.push(power());if(D.tempHist.length>60){D.tempHist.shift();D.powHist.shift()}
-  $("#kTemp").textContent=D.temp.toFixed(1);$("#kPow").textContent=power();
-  $("#kTempNote").textContent=D.temp>32?"above threshold!":"within range";$("#kTempNote").style.color=D.temp>32?"var(--warn)":"";
-  if(D.temp>32&&Math.random()<.3)logEv("High temperature alert sent","wr");
-  drawChart();
+  const P=power();
+  D.temp+=((26+D.amb+P/900)-D.temp)*.08+(Math.random()-.5)*.18;
+  D.kwh+=P/1000/60;
+  D.tank=D.pump?Math.min(100,D.tank+1.8):Math.max(0,D.tank-.25);
+  const g=D.ch[2];
+  if(g.on){D.gOn++;if(D.gTimer&&D.gOn>=25){g.on=false;D.gOn=0;D.preset="";updateTiles();logEv("Geyser switched off — 25 s safety timer","wr")}}else D.gOn=0;
+  checkTank();
+  if(D.heat&&D.temp>32){if(!D.heatAlerted){D.heatAlerted=true;logEv(`Heat alert sent · ${D.temp.toFixed(1)} °C`,"wr")}}else if(D.temp<31.2)D.heatAlerted=false;
+  D.tH.push(D.temp);D.pH.push(P);if(D.tH.length>60){D.tH.shift();D.pH.shift()}
+  if(document.activeElement!==$("#tankIn"))$("#tankIn").value=D.tank;
+  renderTank();
+  $("#kTemp").textContent=D.temp.toFixed(1);$("#kPow").textContent=P;$("#kEn").textContent=D.kwh.toFixed(2);
+  drawChart();spark($("#spPow"),D.pH,"#a78bfa",0,2400);spark($("#spTemp"),D.tH,"#22d3ee",22,38);
 }
+function fitCanvas(cv){const dpr=Math.min(devicePixelRatio||1,2),w=cv.clientWidth,h=cv.clientHeight;if(!w||!h)return null;if(cv.width!==Math.round(w*dpr)||cv.height!==Math.round(h*dpr)){cv.width=Math.round(w*dpr);cv.height=Math.round(h*dpr)}const c=cv.getContext("2d");c.setTransform(dpr,0,0,dpr,0,0);c.clearRect(0,0,w,h);return{c,w,h}}
+function spark(cv,arr,color,min,max){const f=fitCanvas(cv);if(!f||arr.length<2)return;const{c,w,h}=f;c.beginPath();arr.forEach((v,i)=>{const x=w*i/(arr.length-1),y=h-2-(h-4)*Math.max(0,Math.min(1,(v-min)/(max-min)));i?c.lineTo(x,y):c.moveTo(x,y)});c.strokeStyle=color;c.lineWidth=1.8;c.lineJoin="round";c.stroke();c.lineTo(w,h);c.lineTo(0,h);c.closePath();const g=c.createLinearGradient(0,0,0,h);g.addColorStop(0,color+"44");g.addColorStop(1,color+"00");c.fillStyle=g;c.fill()}
 function drawChart(){
-  const cv=$("#chart"),dpr=Math.min(devicePixelRatio||1,2),w=cv.clientWidth,h=cv.clientHeight;if(!w)return;
-  cv.width=w*dpr;cv.height=h*dpr;const c=cv.getContext("2d");c.setTransform(dpr,0,0,dpr,0,0);c.clearRect(0,0,w,h);
-  const st=getComputedStyle(document.documentElement),line=st.getPropertyValue("--line").trim(),muted=st.getPropertyValue("--faint").trim();
-  c.strokeStyle=line;c.lineWidth=1;c.fillStyle=muted;c.font="11px JetBrains Mono, monospace";
-  for(let i=0;i<=4;i++){const y=10+(h-30)*i/4;c.beginPath();c.moveTo(0,y);c.lineTo(w,y);c.stroke()}
-  const plot=(arr,min,max,color,fill)=>{if(arr.length<2)return;c.beginPath();arr.forEach((v,i)=>{const x=w*(i/59)+(w*(60-arr.length)/59*0);const xx=w-(arr.length-1-i)*(w/59);const y=10+(h-30)*(1-(v-min)/(max-min));i?c.lineTo(xx,y):c.moveTo(xx,y)});c.strokeStyle=color;c.lineWidth=2.2;c.lineJoin="round";c.stroke();if(fill){c.lineTo(w,h-20);c.lineTo(w-(arr.length-1)*(w/59),h-20);c.closePath();const g=c.createLinearGradient(0,0,0,h);g.addColorStop(0,color+"55");g.addColorStop(1,color+"00");c.fillStyle=g;c.fill()}};
-  plot(D.powHist,0,2400,"#a78bfa",true);
-  plot(D.tempHist,22,38,"#22d3ee",false);
-  c.fillStyle=muted;c.fillText("now",w-26,h-4);c.fillText("−60 s",2,h-4);
+  const cv=$("#chart"),f=fitCanvas(cv);if(!f)return;const{c,w,h}=f;
+  const st=getComputedStyle(document.documentElement),line=st.getPropertyValue("--line").trim(),faint=st.getPropertyValue("--faint").trim();
+  const L=40,R=40,T=12,B=24,pw=w-L-R,ph=h-T-B;
+  c.font="11px JetBrains Mono, monospace";c.textBaseline="middle";
+  for(let i=0;i<=4;i++){const y=T+ph*i/4;c.strokeStyle=line;c.lineWidth=1;c.beginPath();c.moveTo(L,y);c.lineTo(w-R,y);c.stroke();
+    c.fillStyle=faint;c.textAlign="right";c.fillText(Math.round(2400*(1-i/4)),L-8,y);c.textAlign="left";c.fillText((22+16*(1-i/4)).toFixed(0),w-R+8,y)}
+  c.textAlign="left";c.fillText("−60 s",L,h-8);c.textAlign="right";c.fillText("now",w-R,h-8);
+  const X=i=>L+pw*(i/59),n=D.tH.length,off=60-n;
+  const plot=(arr,min,max,color,fill)=>{const Y=v=>T+ph*(1-(v-min)/(max-min));c.beginPath();arr.forEach((v,i)=>{const x=X(i+off),y=Y(v);i?c.lineTo(x,y):c.moveTo(x,y)});c.strokeStyle=color;c.lineWidth=2.2;c.lineJoin="round";c.stroke();
+    if(fill){c.lineTo(X(59),T+ph);c.lineTo(X(off),T+ph);c.closePath();const g=c.createLinearGradient(0,T,0,T+ph);g.addColorStop(0,color+"44");g.addColorStop(1,color+"00");c.fillStyle=g;c.fill()}return Y};
+  const Yp=plot(D.pH,0,2400,"#a78bfa",true),Yt=plot(D.tH,22,38,"#22d3ee",false);
+  if(D.hover>=0){const k=D.hover-off;if(k>=0&&k<n){const x=X(D.hover);c.strokeStyle=faint;c.setLineDash([3,4]);c.beginPath();c.moveTo(x,T);c.lineTo(x,T+ph);c.stroke();c.setLineDash([]);
+    [[Yp(D.pH[k]),"#a78bfa"],[Yt(D.tH[k]),"#22d3ee"]].forEach(([y,col])=>{c.beginPath();c.arc(x,y,4.5,0,7);c.fillStyle=col;c.fill();c.strokeStyle="#fff";c.lineWidth=1.5;c.stroke()})}}
 }
-function startDemo(){demoInitOnce();if(demoT)return;for(let i=0;i<30;i++){D.tempHist.length<30&&(D.tempHist.push(D.temp),D.powHist.push(power()))}tick();demoT=setInterval(tick,1000)}
+function startDemo(){demoInitOnce();if(demoT)return;tick();demoT=setInterval(tick,1000)}
 function stopDemo(){clearInterval(demoT);demoT=0}
-addEventListener("resize",()=>{if(demoT)drawChart()});
+addEventListener("resize",()=>{if(demoT)tick()});
 
 /* ============ PROJECT PLANNER ============ */
 const FEATS=[["Monitoring",1],["Remote control",1.2],["Automation rules",1.4],["Mobile app",2],["Web dashboard",1.6],["AI / vision",3],["Custom PCB",2.2],["Enclosure design",1.4],["Mains (230 V) safety",1.8]];
@@ -1036,7 +1572,7 @@ calc();
 $("#sendBrief").onclick=()=>{ if(!$$("#optFeat input:checked").length){toast("Pick at least one feature first.");return}
   location.hash="#/contact?type=project"; setTimeout(()=>{$("#f-msg").value=brief+"\n\nAbout my project:\n";$("#f-msg").focus()},80)};
 
-/* ============ FORMS ============ */
+/* ============ CONTACT PAGE FORM ============ */
 const TABS={
  contact:{label:"Business enquiry",org:"Organisation",extra:null,ph:"Tell us what you'd like to discuss…",btn:"Send message"},
  project:{label:"New project",org:"Organisation",extra:"Budget range / timeline (optional)",ph:"Describe what you want to build, connect or automate…",btn:"Send project brief"},
@@ -1044,42 +1580,32 @@ const TABS={
  workshop:{label:"Workshop interest",org:"College / school",extra:"Topic of interest",ph:"Number of students, preferred dates, topics…",btn:"Register interest"},
  career:{label:"Career application",org:"Current company / college",extra:"Role applying for",ph:"Tell us about your skills and projects. Add a link to your portfolio or GitHub.",btn:"Send application"}
 };
+const TYPE_OF={contact:"enquiry",project:"project",vendor:"vendor",workshop:"workshop",career:"career"};
 let tab="contact";
 function applyTab(t){ if(!TABS[t])t="contact"; tab=t; const c=TABS[t];
   $$("#formTabs .tab").forEach(b=>b.setAttribute("aria-selected",b.dataset.t===t));
   $("#orgLbl").textContent=c.org;$("#f-msg").placeholder=c.ph;$("#mainForm .btn").firstChild.textContent=c.btn+" ";
-  $("#extraFld").hidden=!c.extra; if(c.extra){$("#extraLbl").textContent=c.extra} }
+  $("#extraFld").hidden=!c.extra; if(c.extra){$("#extraLbl").textContent=c.extra}
+  $("#okBox").classList.remove("show"); }
 $("#formTabs").addEventListener("click",e=>{const b=e.target.closest(".tab");if(b)applyTab(b.dataset.t)});
-$("#mainForm").addEventListener("submit",async e=>{
-  e.preventDefault();const f=e.target,v=n=>f.elements[n]?.value.trim()||"";
-  if(v("website"))return; // honeypot
-  const okName=!!v("name"),okMail=/^\S+@\S+\.\S+$/.test(v("email")),okMsg=!!v("message");
-  [["f-name",okName],["f-email",okMail],["f-msg",okMsg]].forEach(([id,ok])=>{const el=$("#"+id);el.classList.toggle("bad",!ok);el.setAttribute("aria-invalid",!ok);});
-  if(!(okName&&okMail&&okMsg)){toast("Please fix the highlighted fields.");$(".bad")?.focus();return}
-  const c=TABS[tab];
-  const body=`Type: ${c.label}\nName: ${v("name")}\nEmail: ${v("email")}\nPhone: ${v("phone")}\n${c.org}: ${v("organisation")}\n${c.extra?c.extra+": "+v("extra")+"\n":""}\nMessage:\n${v("message")}`;
-  if(NEXORA.formEndpoint){
-    try{const r=await fetch(NEXORA.formEndpoint,{method:"POST",headers:{"Content-Type":"application/json",Accept:"application/json"},body:JSON.stringify({type:tab,name:v("name"),email:v("email"),phone:v("phone"),organisation:v("organisation"),extra:v("extra"),message:v("message")})});
-      if(!r.ok)throw 0;f.reset();showOk("Thank you — your message has been sent. We'll be in touch soon.");return}catch(_){toast("Couldn't send online — opening your email app instead.")}
-  }
-  location.href=`mailto:${NEXORA.email}?subject=${encodeURIComponent("[Nexora] "+c.label+" — "+v("name"))}&body=${encodeURIComponent(body)}`;
-  if(!NEXORA.formEndpoint) showOk("Your email draft is ready in your mail app — just press Send. If nothing opened, write to <b>"+NEXORA.email+"</b>.");
-});
+$("#formNote").textContent=NEXORA.formEndpoint?"We'll email you a confirmation and reply soon.":"Opens your email app with the details filled in, addressed to Nexora.";
+bindForm($("#mainForm"),{
+  type:()=>TYPE_OF[tab],
+  item:d=>tab==="career"?(d.extra||""):"",
+  onDone:(res,d)=>{
+    const f=$("#mainForm");
+    if(res.via==="server"){ f.reset(); applyTab(tab); showOk(`<b>Thank you, ${esc(d.name.split(" ")[0])}!</b> We've received your message and emailed a confirmation to <b>${esc(d.email)}</b>. Reference: <b>${res.ref}</b>.`); }
+    else showOk(`Your email draft is ready in your mail app — just press <b>Send</b>. If nothing opened, write to <b>${esc(NEXORA.email)}</b> and quote <b>${res.ref}</b>.`);
+  }});
 function showOk(h){const b=$("#okBox");$("#okTxt").innerHTML=h;b.classList.add("show");b.scrollIntoView({behavior:"smooth",block:"nearest"})}
-$("#mainForm").addEventListener("input",e=>e.target.classList.remove("bad"));
 let toastT;function toast(m){const t=$("#toast");t.textContent=m;t.classList.add("show");clearTimeout(toastT);toastT=setTimeout(()=>t.classList.remove("show"),3800)}
 
 /* ============ NEXT / PREV ============ */
-(function(){const order=[["home","Home"],["products","Products"],["solutions","Solutions"],["technology","Technology"],["demo","Live Demo"],["learn","Learn"],["about","About"],["contact","Contact"]];
+(function(){const order=[["home","Home"],["products","Products"],["solutions","Solutions"],["workshops","Workshops"],["technology","Technology"],["demo","Live Demo"],["about","About"],["contact","Contact"]];
  order.forEach(([r,n],i)=>{const pg=$(`.page[data-route="${r}"]`);const pv=order[i-1],nx=order[i+1];
   const d=document.createElement("div");d.className="nextp";
   d.innerHTML=`<div class="wrap">${pv?`<a class="pv" href="#/${pv[0]}"><small>← Previous</small><b>${pv[1]}</b></a>`:"<span></span>"}${nx?`<a class="nx" href="#/${nx[0]}"><small>Next →</small><b>${nx[1]}</b></a>`:`<a class="nx" href="#/start"><small>Ready?</small><b>Start a project</b></a>`}</div>`;
   pg.appendChild(d)});})();
-
-/* ============ PRODUCT FILTER ============ */
-$("#prodFilters").addEventListener("click",e=>{const b=e.target.closest(".tab");if(!b)return;
-  $$("#prodFilters .tab").forEach(x=>x.setAttribute("aria-selected",x===b));
-  $$("#prodList .prod").forEach(p=>{p.hidden=b.dataset.f!=="all"&&p.dataset.cls!==b.dataset.f});});
 
 /* ============ HERO CARD TILT ============ */
 (function(){const h=$(".hero"),c=$(".hero-card");if(!c||matchMedia("(prefers-reduced-motion: reduce)").matches)return;
@@ -1087,7 +1613,11 @@ $("#prodFilters").addEventListener("click",e=>{const b=e.target.closest(".tab");
  h.addEventListener("pointerleave",()=>c.style.transform="");})();
 
 /* ============ COMMAND PALETTE ============ */
-const CMDS=[["i-globe","Home","#/home"],["i-box","Products","#/products"],["i-build","Solutions","#/solutions"],["i-chip","Technology","#/technology"],["i-bolt","Live Demo","#/demo"],["i-school","Learn · Workshops & Careers","#/learn"],["i-users","About","#/about"],["i-mail","Contact","#/contact"],["i-target","Plan a project","#/start"],["i-lock","Employee Login","employee/"],["i-mail","Email Nexora","mailto:"+NEXORA.email],["i-sun","Toggle light / dark theme","@theme"]];
+const CMDS=[["i-globe","Home","#/home"],["i-box","Products","#/products"],["i-build","Solutions","#/solutions"],["i-school","Workshops","#/workshops"],["i-chip","Technology","#/technology"],["i-bolt","Live Demo","#/demo"],["i-users","About","#/about"],["i-users","Careers","#/careers"],["i-mail","Contact","#/contact"],["i-target","Plan a project","#/start"],["i-lock","Employee Login","employee/"],
+ ...PRODUCTS.map(p=>[p.ic,"Product · "+p.name,"#/products/"+p.id]),
+ ...WORKSHOPS.map(w=>[w.ic,"Workshop · "+w.name,"#/workshops/"+w.id]),
+ ...SOLUTIONS.map(x=>[x.ic,"Solution · "+x.name,"#/solutions/"+x.id]),
+ ["i-mail","Email Nexora","mailto:"+NEXORA.email],["i-sun","Toggle light / dark theme","@theme"]];
 let cSel=0,cList=CMDS;
 function cRender(){$("#cmdList").innerHTML=cList.map((c,i)=>`<div class="cmd-item ${i===cSel?"sel":""}" data-i="${i}">${ic(c[0])}<span>${c[1]}</span><kbd>${c[2].startsWith("#")?"page":c[2]==="@theme"?"action":"link"}</kbd></div>`).join("")||'<div class="cmd-item">No matches</div>'}
 function cOpen(){$("#cmd").classList.add("open");$("#cmdIn").value="";cList=CMDS;cSel=0;cRender();setTimeout(()=>$("#cmdIn").focus(),20)}
